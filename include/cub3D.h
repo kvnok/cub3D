@@ -17,9 +17,36 @@
 #include <errno.h>
 
 
-/*
-map struct
+typedef struct s_vector
+{
+	int x;
+	int y;
+}	t_vector;
 
+/*
+filename.cub
+paths to textures
+floor color
+ceiling color
+map without player (N, W, S, E) in it
+original player x and y
+player starting direction
 */
+typedef struct s_parser
+{
+	char		*filename;
+	char		*pathNorthTexture;
+	char		*pathSouthTexture;
+	char		*pathEastTexture;
+	char		*pathWestTexture;
+	int			floorColor;
+	int			ceilingColor;
+	char		**map;
+	t_vector	playerPos;
+	char		startingDir;
+}	t_parser;
+
+// parser.c
+void parser(int argc, char **argv, t_parser *stuff);
 
 #endif
