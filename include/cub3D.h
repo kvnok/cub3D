@@ -15,7 +15,7 @@
 #include "../MLX42/include/MLX42/MLX42_Int.h"
 #include <time.h>
 #include <errno.h>
-
+#include "../libft/libft.h"
 
 typedef struct s_vector
 {

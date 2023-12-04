@@ -1,21 +1,22 @@
 #include "../include/cub3D.h"
 
-/*
-print map
-free map
-flood fill
-check spacing
-check enters
-is everything there
-no duplicate config
-no duplicate dir in map
-illegal characters in map
+void freeArr(char **arr) {
+	int i = 0;
+	while(arr[i] != NULL) {
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+}
 
-non specific / unknown config
-
-error return / exit
-*/
+void printArr(char **arr) {
+	int i = 0;
+	while(arr[i] != NULL) {
+		printf("%s", arr[i]);
+		i++;
+	}
+}
 
 void parser(int argc, char **argv, t_parser *stuff) {
-
+	
 }
