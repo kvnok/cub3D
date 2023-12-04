@@ -44,9 +44,15 @@ typedef struct s_parser
 	char		**map;
 	t_vector	playerPos;
 	char		startingDir;
+
+	char		**readout;
 }	t_parser;
 
 // parser.c
-void parser(int argc, char **argv, t_parser *stuff);
+int		parser(int argc, char **argv, t_parser *stuff);
+
+// parserUtils.c
+void	freeArr(char **arr);
+void	printArr(char **arr);
 
 #endif

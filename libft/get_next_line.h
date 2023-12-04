@@ -21,6 +21,9 @@
 # endif
 
 char	*get_next_line(int fd);
+char	*strjoin_free(char **s1, char **s2);
+char	*save(char **line, char **afternewline);
+char	*reading(int fd, char *buffer, char **line, char **afternewline);
 int		int_strlen(char *s);
 void	*malloc_and_bzero(int count, int size);
 char	*cut_free(char **s, int start, int len, char **extra);
