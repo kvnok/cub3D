@@ -16,4 +16,10 @@
 #include <time.h>
 #include <errno.h>
 
+
+/*
+map struct
+
+*/
+
 #endif
