@@ -29,22 +29,22 @@ $(LIBFT):
 
 $(MLX42):
 	git submodule update --init
-	cmake $(MLX42_DIR) -B $(MLX42_DIR)/build
+	@cmake $(MLX42_DIR) -B $(MLX42_DIR)/build
 	$(MAKE) -C $(MLX42_DIR)/build -j4 --quiet
 
 $(NAME): $(OBJ_DIR) $(OBJECTS)
-	$(CC) $(OBJECTS) $(LFLAGS) -o $(NAME) 
+	@$(CC) $(OBJECTS) $(LFLAGS) -o $(NAME) 
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
-	$(MAKE) clean -C $(MLX42_DIR)/build -j4 --quiet
-	$(MAKE) clean -C $(LIBFT_DIR) --quiet
+	@$(MAKE) clean -C $(MLX42_DIR)/build -j4 --quiet
+	@$(MAKE) clean -C $(LIBFT_DIR) --quiet
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
