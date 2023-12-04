@@ -1,3 +1,2 @@
 # cub3D
-Raycasting demo
-Using MLX42
+Raycasting demo, using MLX42
