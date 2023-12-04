@@ -1,19 +1,27 @@
 SHELL := /bin/bash
 
 NAME := cub3D
+
+SRC_FILES	:=	main.c
+
 SRC_DIR := src
 OBJ_DIR := obj
-MLX42_DIR := MLX42
+INC_DIR := include
+MLX_DIR := MLX42
+
+OBJ_FILES := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+DEP_FILES := $(OBJ_FILES:.o=.d)
+
+# SRC_SUBD = $(shell find $(SRC_DIR) -type d)
+# OBJ_SUBD = $(subst $(SRC_DIR), $(OBJ_DIR), $(SRCSUBD))
+
 MLX42 := $(MLX42_DIR)/build/libmlx42.a
-HEADERS := $(shell find include -type f -name '*.h')
-SOURCES := $(shell find $(SRC_DIR) -type f -name '*.c')
-OBJECTS := $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(SOURCES:.c=.o))
 
 CC  := cc
-IFLAGS := -Iinclude -I$(MLX42_DIR)/include
-CFLAGS := 
-#-Wall -Wextra -Werror
-LFLAGS := -L$(MLX42_DIR)/build -lmlx42 -lglfw -ldl -pthread -lm
+
+IFLAGS := -I $(INC_DIR) -I $(MLX_DIR)/include
+LFLAGS := -L $(MLX_DIR)/build -lmlx42 -lglfw -ldl -pthread -lm
+CFLAGS := -Wall -Wextra -Werror -MMD -MP
 
 _DEBUG := 0
 ifeq ($(_DEBUG),1)
@@ -24,25 +32,24 @@ all: $(MLX42) $(NAME)
 
 $(MLX42):
 	git submodule update --init
-	cmake $(MLX42_DIR) -B $(MLX42_DIR)/build
-	$(MAKE) -C $(MLX42_DIR)/build -j4 --quiet
+	cmake $(MLX_DIR) -B $(MLX_DIR)/build
+	$(MAKE) -C $(MLX_DIR)/build -j4 --quiet
 
-$(NAME): $(OBJ_DIR) $(OBJECTS)
-	$(CC) $(OBJECTS) $(LFLAGS) -o $(NAME) 
+$(NAME): $(OBJ_FILES)
+	$(CC) $^ $(LFLAGS) -o $@
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
+-include $(DEP_FILES)
+
 clean:
-	$(MAKE) clean -C $(MLX42_DIR)/build -j4 --quiet
+	$(MAKE) clean -C $(MLX_DIR)/build -j4 --quiet
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	$(MAKE) clean/fast -C $(MLX42_DIR)/build -j4 --quiet
+	$(MAKE) clean/fast -C $(MLX_DIR)/build -j4 --quiet
 	-rm -f $(NAME)
 
 re: fclean all
