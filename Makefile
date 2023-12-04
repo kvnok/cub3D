@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-NAME := modular
+NAME := cub3D
 SRC_DIR := src
 OBJ_DIR := obj
 MLX42_DIR := MLX42
