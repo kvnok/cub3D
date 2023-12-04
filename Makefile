@@ -2,7 +2,8 @@ SHELL := /bin/bash
 
 NAME := cub3D
 
-SRC_FILES	:=	main.c
+SRC_FILES	:=	main.c			\
+				dda/ddamain.c
 
 SRC_DIR := src
 OBJ_DIR := obj
