@@ -67,7 +67,7 @@ int parser(int argc, char **argv, t_parser *stuff) {
 	}
 	// printf("%s", str);
 	stuff->readout = ft_split(str, '\n');
-	if (struff->readout == NULL) {
+	if (stuff->readout == NULL) {
 		// error out
 		free(str);
 		close(fd);
