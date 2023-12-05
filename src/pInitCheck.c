@@ -51,5 +51,12 @@ int checkElementCountandNewlines(char *s) {
 }
 
 bool isFileNameCorrect(char *fileName) {
-	return true;
+	int len = int_strlen(fileName);
+	if (len <= 4 || fileName[len-5] == '/') {
+		return false;
+	}
+	if (fileName[len-4] == '.' && fileName[len-3] == 'c' && fileName[len-2] == 'u' && fileName[len-1] == 'b') {
+		return true;
+	}
+	return false;
 }

@@ -1,11 +1,11 @@
 #include "../include/cub3D.h"
 
 int parserInit(char **argv, t_parser *p) {
-	initDict(p);
 	parserSetNull(p);
+	initDict(p);
+	p->filename = argv[1];
 	if (isFileNameCorrect(p->filename) == false)
 		return parserError("isFileNameCorrect() false\n");
-	p->filename = argv[1];
 	char *str = ft_calloc(sizeof(char *) + 1, 1);
 	if (str == NULL)
 		return parserError("str ft_calloc() fail\n");
