@@ -6,8 +6,8 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	t_parser stuff;
-	if (parser(argc, argv, &stuff) == 1) {
+	t_parser p;
+	if (parser(argc, argv, &p) == 1) {
 		// error out
 	}
 	return 0;

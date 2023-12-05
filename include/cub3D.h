@@ -24,8 +24,14 @@
 #define FLOOR "F"
 #define CEILING "C"
 
-typedef struct s_vector
-{
+// dictionary
+typedef struct s_dict {
+	char *key;
+	bool flag;
+	char *value;
+}	dict;
+
+typedef struct s_vector {
 	int x;
 	int y;
 }	t_vector;
@@ -39,8 +45,7 @@ map without player (N, W, S, E) in it
 original player x and y
 player starting direction
 */
-typedef struct s_parser
-{
+typedef struct s_parser {
 	char		*filename;
 	char		*pathNorthTexture;
 	char		*pathSouthTexture;
@@ -56,7 +61,7 @@ typedef struct s_parser
 }	t_parser;
 
 // parser.c
-int		parser(int argc, char **argv, t_parser *stuff);
+int		parser(int argc, char **argv, t_parser *p);
 
 // parserUtils.c
 void	freeArr(char **arr);
@@ -64,7 +69,7 @@ void	printArr(char **arr);
 
 // parserInit.c
 int		read_from_file(char **str, int fd);
-void	parserSetNull(t_parser *stuff);
-int		parserInit(int argc, char **argv, t_parser *stuff);
+void	parserSetNull(t_parser *p);
+int		parserInit(int argc, char **argv, t_parser *p);
 
 #endif

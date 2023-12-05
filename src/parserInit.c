@@ -26,24 +26,24 @@ int	read_from_file(char **str, int fd) {
 	return 0;
 }
 
-void parserSetNull(t_parser *stuff) {
-	stuff->filename = NULL;
-	stuff->pathNorthTexture = NULL;
-	stuff->pathSouthTexture = NULL;
-	stuff->pathEastTexture = NULL;
-	stuff->pathWestTexture = NULL;
-	stuff->floorColor = 0;
-	stuff->ceilingColor = 0;
-	stuff->map = NULL;
-	// stuff->playerPos = NULL;
-	stuff->startingDir = 0;
-	stuff->readout = NULL;
+void parserSetNull(t_parser *p) {
+	p->filename = NULL;
+	p->pathNorthTexture = NULL;
+	p->pathSouthTexture = NULL;
+	p->pathEastTexture = NULL;
+	p->pathWestTexture = NULL;
+	p->floorColor = 0;
+	p->ceilingColor = 0;
+	p->map = NULL;
+	// p->playerPos = NULL;
+	p->startingDir = 0;
+	p->readout = NULL;
 }
 
-int parserInit(int argc, char **argv, t_parser *stuff) {
-	parserSetNull(stuff);	
-	stuff->filename = argv[1];
-	int fd = open(stuff->filename, O_RDONLY);
+int parserInit(int argc, char **argv, t_parser *p) {
+	parserSetNull(p);	
+	p->filename = argv[1];
+	int fd = open(p->filename, O_RDONLY);
 	if (fd < 0) {
 		// error out
 		return 1;
@@ -61,13 +61,13 @@ int parserInit(int argc, char **argv, t_parser *stuff) {
 		return 1;
 	}
 	// printf("%s", str);
-	stuff->readout = ft_split(str, '\n');
-	if (stuff->readout == NULL) {
+	p->readout = ft_split(str, '\n');
+	if (p->readout == NULL) {
 		// error out
 		free(str);
 		close(fd);
 		return 1;
 	}
-	printArr(stuff->readout);
+	printArr(p->readout);
 	return 0;
 }
