@@ -37,9 +37,11 @@ int parser(char **argv, t_parser *p) {
 		return parserError("getRawElementsAndMap() fail\n");
 	}
 	// maybe free p->readout and set it to NULL regardless
+	printf("-----------------\n");
 	printArr(p->rawElements);
 	printf("-----------------\n");
 	printArr(p->rawMap);
+	printf("-----------------\n");
 	if (setElementValues(p) == 1) {
 		freeArr(p->readout);
 		return parserError("setElementValues() fail\n");

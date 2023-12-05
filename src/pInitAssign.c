@@ -27,6 +27,10 @@ void initDict(t_parser *p) {
 	while(i < 6) {
 		p->dict[i].flag = false;
 		p->dict[i].value = NULL;
+		if (i < 4)
+			p->dict[i].func = handleTexturePath;
+		else
+			p->dict[i].func = handleColor;
 		i++;
 	}
 }

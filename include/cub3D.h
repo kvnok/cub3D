@@ -24,11 +24,17 @@
 #define FLOOR "F "
 #define CEILING "C "
 
+typedef struct s_parser t_parser;
+
+typedef int (*func)(t_parser *, int, char *);
+
 // dictionary
+// mostly used for elements
 typedef struct s_dict {
 	char *key;
 	bool flag;
 	char *value;
+	func func;
 }	dict;
 
 typedef struct s_vector {
@@ -91,6 +97,8 @@ int		fillStringFromFile(char **str, int fd);
 int		extractTextFromFile(char **str, t_parser *p);
 
 // parserElements.c
+int handleColor(t_parser *p, int dictIndex, char *line);
+int handleTexturePath(t_parser *p, int dictIndex, char *line);
 int		setElementValues(t_parser *p);
 
 #endif
