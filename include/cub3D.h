@@ -17,12 +17,12 @@
 #include <errno.h>
 #include "../libft/libft.h"
 
-#define NORTH "NO"
-#define SOUTH "SO"
-#define EAST "EA"
-#define WEST "WE"
-#define FLOOR "F"
-#define CEILING "C"
+#define NORTH "NO "
+#define SOUTH "SO "
+#define EAST "EA "
+#define WEST "WE "
+#define FLOOR "F "
+#define CEILING "C "
 
 // dictionary
 typedef struct s_dict {
@@ -78,19 +78,19 @@ int		parser(char **argv, t_parser *p);
 int		parserInit(char **argv, t_parser *p);
 
 // pInitAssign.c
-void parserSetNull(t_parser *p);
-void initDict(t_parser *p);
+void	parserSetNull(t_parser *p);
+void	initDict(t_parser *p);
 
 // pInitCheck.c
-int loopThroughElements(char *str, int *elementCount);
-int checkElementCountandNewlines(char *s);
-bool isFileNameCorrect(char *fileName);
+int		loopThroughElements(char *str, int *elementCount);
+int		checkElementCountandNewlines(char *s);
+bool	isFileNameCorrect(char *fileName);
 
 // pInitRead.c
-int	fillStringFromFile(char **str, int fd);
-int extractTextFromFile(char **str, t_parser *p);
+int		fillStringFromFile(char **str, int fd);
+int		extractTextFromFile(char **str, t_parser *p);
 
 // parserElements.c
-int		setElements(t_parser *p);
+int		setElementValues(t_parser *p);
 
 #endif

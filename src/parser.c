@@ -38,16 +38,11 @@ int parser(char **argv, t_parser *p) {
 	}
 	// maybe free p->readout and set it to NULL regardless
 	printArr(p->rawElements);
+	printf("-----------------\n");
 	printArr(p->rawMap);
-
-	// printf("testok\n");
-	// loop through all lines
-	// setElements(p);
-	// check for flags, key value pair array, constants and booleans
-	// readout raw map data
-	// check for obvious errors like illegal characters
-	// floodfill map
-	// errorcheck values of floor and ceiling color
-	
+	if (setElementValues(p) == 1) {
+		freeArr(p->readout);
+		return parserError("setElementValues() fail\n");
+	}
 	return 0;
 }

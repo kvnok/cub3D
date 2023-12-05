@@ -27,32 +27,7 @@ int getPrefixLength(char *s) {
 	return i-1;
 }
 
-// int fillPrefixArray(char ) {
-
-// }
-
-/*
-array of prefixes
-*/
-int setElements(t_parser *p) {
-	// int i = 0;
-	// while (p->readout[i] != NULL) {
-	// 	int prefixLen = getPrefixLength(p->readout[i]);
-	// 	if (prefixLen == -1) {
-	// 		break;
-	// 	}
-		
-	// 	char *prefix;
-	// 	prefix = ft_substr(file, 0, i);
-	// 	if (prefix == NULL) {
-	// 		free(prefix);
-	// 		return 1;
-	// 	}
-	// 	free(prefix);
-	// 	i++;
-	// }
+int setElementValues(t_parser *p) {
+	
 	return 0;
 }
-
-	// printf("|%s|\n", p->readout[i]);
-	// printf("{%s}\n", prefix);
