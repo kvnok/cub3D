@@ -1,31 +1,8 @@
 #include "../include/cub3D.h"
 
-int	read_from_file(char **str, int fd) {
-	char	*line;
-
-	while (1) {
-		line = get_next_line(fd);
-		if (line == NULL) {
-			if ((*str)[0] == '\0' || int_strlen(*str) == 0) {
-				free(line);
-				return 1;
-			}
-			break ;
-		}
-		*str = strjoin_free(str, &line);
-		if (*str == NULL) {
-			free(line);
-			return 1;
-		}
-		if (line != NULL) {
-			free(line);
-		}
-	}
-	// printf("|%s|\n", *str);
-	close(fd);
-	return 0;
-}
-
+/*
+INIT STRUCT WITH BASIC THINGS
+*/
 void parserSetNull(t_parser *p) {
 	p->filename = NULL;
 	p->pathNorthTexture = NULL;
@@ -57,34 +34,78 @@ void initDict(t_parser *p) {
 	}
 }
 
+/*
+READING OUT FILE
+*/
+int	fillStringFromFile(char **str, int fd) {
+	char	*line;
+
+	while (1) {
+		line = get_next_line(fd);
+		if (line == NULL) {
+			if ((*str)[0] == '\0' || int_strlen(*str) == 0) {
+				free(line);
+				return parserError("line read fail\n");
+			}
+			break ;
+		}
+		*str = strjoin_free(str, &line);
+		if (*str == NULL) {
+			free(line);
+			return parserError("strjoin() fail\n");
+		}
+		if (line != NULL) {
+			free(line);
+		}
+	}
+	return 0;
+}
+
+int extractTextFromFile(char **str) {
+	int fd = open(p->filename, O_RDONLY);
+	if (fd < 0) {
+		return parserError("fd < 0\n");
+	}
+	if (fillStringFromFile(&str, fd) == 1) {
+		close(fd);
+		return parserError("fillStringFromFile() fail\n");
+	}
+	close(fd);
+	return 0;
+}
+
+/*
+ENTER ERRORCHECK
+*/
+
+
+// count elements
+
+// get start of map part
+
+
+
+
 int parserInit(char **argv, t_parser *p) {
 	initDict(p);
 	parserSetNull(p);	
 	p->filename = argv[1];
-	int fd = open(p->filename, O_RDONLY);
-	if (fd < 0) {
-		// error out
-		return 1;
-	}
 	char *str = ft_calloc(sizeof(char *) + 1, 1);
 	if (str == NULL) {
-		// error out
-		close(fd);
-		return 1;
+		return parserError("str ft_calloc() fail\n");
 	}
-	if (read_from_file(&str, fd) == 1) {
-		// error out
+	if (extractTextFromFile(&str) == 1) {
 		free(str);
-		close(fd);
-		return 1;
+		return parserError("extractTextFromFile() fail\n");
 	}
+
+
 	// printf("%s", str);
 	p->readout = ft_split(str, '\n');
 	free(str);
 	if (p->readout == NULL) {
 		// error out
-		close(fd);
-		return 1;
+		return parserError("p->readout ft_split() fail\n");
 	}
 	// printArr(p->readout);
 	return 0;
