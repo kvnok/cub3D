@@ -58,18 +58,25 @@ typedef struct s_parser {
 	char		startingDir;
 
 	char		**readout;
+	dict		dict[6];
+
+	char		**rawElements;
+	char		**rawMap;
 }	t_parser;
 
 // parser.c
-int		parser(int argc, char **argv, t_parser *p);
+int		parser(char **argv, t_parser *p);
 
 // parserUtils.c
-void	freeArr(char **arr);
-void	printArr(char **arr);
+void	freeArr(char **stringArr);
+void	printArr(char **stringArr);
+int		parserError(char *errorText);
+char	**callocStringArr(int amount);
 
 // parserInit.c
-int		read_from_file(char **str, int fd);
-void	parserSetNull(t_parser *p);
-int		parserInit(int argc, char **argv, t_parser *p);
+int		parserInit(char **argv, t_parser *p);
+
+// parserElements.c
+int		setElements(t_parser *p);
 
 #endif

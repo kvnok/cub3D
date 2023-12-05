@@ -1,18 +1,39 @@
 #include "../include/cub3D.h"
 
-void freeArr(char **arr) {
+void freeArr(char **stringArr) {
 	int i = 0;
-	while(arr[i] != NULL) {
-		free(arr[i]);
+	while(stringArr[i] != NULL) {
+		free(stringArr[i]);
 		i++;
 	}
-	free(arr);
+	free(stringArr);
 }
 
-void printArr(char **arr) {
+void printArr(char **stringArr) {
 	int i = 0;
-	while(arr[i] != NULL) {
-		printf("%s\n", arr[i]);
+	while(stringArr[i] != NULL) {
+		printf("%s\n", stringArr[i]);
 		i++;
 	}
+}
+
+int parserError(char *errorText) {
+	printf("%s", errorText);
+	return 1;
+}
+
+char **callocStringArr(int amount) {
+	char **stringArr;
+	int i;
+
+	stringArr = malloc((sizeof(char *) + 1) * amount);
+	if (stringArr == NULL) {
+		return NULL;
+	}	
+	i = 0;
+	while(i <= amount) {
+		stringArr[i] = NULL;
+		i++;
+	}
+	return stringArr;
 }

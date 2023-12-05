@@ -38,9 +38,27 @@ void parserSetNull(t_parser *p) {
 	// p->playerPos = NULL;
 	p->startingDir = 0;
 	p->readout = NULL;
+	p->rawElements = NULL;
+	p->rawMap = NULL;
 }
 
-int parserInit(int argc, char **argv, t_parser *p) {
+void initDict(t_parser *p) {
+	p->dict[0].key = NORTH;
+	p->dict[1].key = SOUTH;
+	p->dict[2].key = EAST;
+	p->dict[3].key = WEST;
+	p->dict[4].key = FLOOR;
+	p->dict[5].key = CEILING;
+	int i = 0;
+	while(i < 6) {
+		p->dict[i].flag = false;
+		p->dict[i].value = NULL;
+		i++;
+	}
+}
+
+int parserInit(char **argv, t_parser *p) {
+	initDict(p);
 	parserSetNull(p);	
 	p->filename = argv[1];
 	int fd = open(p->filename, O_RDONLY);
@@ -68,6 +86,6 @@ int parserInit(int argc, char **argv, t_parser *p) {
 		close(fd);
 		return 1;
 	}
-	printArr(p->readout);
+	// printArr(p->readout);
 	return 0;
 }
