@@ -1,8 +1,8 @@
 #include "../include/cub3D.h"
 
 /*
-rawElements
-rawMap
+rawElements 0-5
+rawMap 6-end
 */
 int divideRawConfig(t_parser *p) {
 	int i = 0;

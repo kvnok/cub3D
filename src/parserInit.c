@@ -61,12 +61,12 @@ int	fillStringFromFile(char **str, int fd) {
 	return 0;
 }
 
-int extractTextFromFile(char **str) {
+int extractTextFromFile(char **str, t_parser *p) {
 	int fd = open(p->filename, O_RDONLY);
 	if (fd < 0) {
 		return parserError("fd < 0\n");
 	}
-	if (fillStringFromFile(&str, fd) == 1) {
+	if (fillStringFromFile(str, fd) == 1) {
 		close(fd);
 		return parserError("fillStringFromFile() fail\n");
 	}
@@ -77,14 +77,56 @@ int extractTextFromFile(char **str) {
 /*
 ENTER ERRORCHECK
 */
-
-
 // count elements
+int loopThroughElements(char *str, int *elementCount) {
+	int i = 1;
+	if (ft_isalpha(str[0]) == 1) {
+		(*elementCount)++;
+	}
+	while(str[i]) {
+		if (str[i-1] == '\n' && str[i] != '\n' && ft_isalpha(str[i]) == false) {
+			break;
+		}
+		if (str[i-1] == '\n' && ft_isalpha(str[i]) == true) {
+			(*elementCount)++;
+		}
+		if (*elementCount == 6) {
+			while(str[i] && str[i] != '\n') {
+				i++;
+			}
+			break;
+		}
+		i++;
+	}
+	return i;
+}
 
-// get start of map part
-
-
-
+/*
+looping through the first part
+incrementing 
+*/
+int checkElementCountandNewlines(char *s) {
+	int elementCount = 0;
+	int i = loopThroughElements(s, &elementCount);
+	// printf("elementCount: %d\n", elementCount);
+	if (elementCount != 6) {
+		return parserError("Does not have 6 elements\n");
+	}
+	// printf("|%s|\n", s);
+	while(s[i] && s[i] == '\n') {
+		i++;
+	}
+	while(s[i]) {
+		if (s[i - 1] == '\n' && s[i] == '\n') {
+			return parserError("map contains extra newline\n");
+		}
+		if (s[i] == '\n' && !(s[i-1] == '1' || s[i-1] == '0')) {
+			return parserError("invalid map line\n");
+		}
+		i++;
+	}
+	return 0;
+}
 
 int parserInit(char **argv, t_parser *p) {
 	initDict(p);
@@ -94,12 +136,14 @@ int parserInit(char **argv, t_parser *p) {
 	if (str == NULL) {
 		return parserError("str ft_calloc() fail\n");
 	}
-	if (extractTextFromFile(&str) == 1) {
+	if (extractTextFromFile(&str, p) == 1) {
 		free(str);
 		return parserError("extractTextFromFile() fail\n");
 	}
-
-
+	if (checkElementCountandNewlines(str) == 1) {
+		free(str);
+		return parserError("checkElementCountandNewlines() fail\n");
+	}
 	// printf("%s", str);
 	p->readout = ft_split(str, '\n');
 	free(str);
