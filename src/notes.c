@@ -150,3 +150,8 @@ strerror, exit
 library (-lm man man 3 math)
 • All functions of the MinilibX
 */
+
+/*
+loop until map
+
+*/

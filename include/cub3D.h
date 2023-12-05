@@ -17,6 +17,13 @@
 #include <errno.h>
 #include "../libft/libft.h"
 
+#define NORTH "NO"
+#define SOUTH "SO"
+#define EAST "EA"
+#define WEST "WE"
+#define FLOOR "F"
+#define CEILING "C"
+
 typedef struct s_vector
 {
 	int x;
@@ -54,5 +61,10 @@ int		parser(int argc, char **argv, t_parser *stuff);
 // parserUtils.c
 void	freeArr(char **arr);
 void	printArr(char **arr);
+
+// parserInit.c
+int		read_from_file(char **str, int fd);
+void	parserSetNull(t_parser *stuff);
+int		parserInit(int argc, char **argv, t_parser *stuff);
 
 #endif
