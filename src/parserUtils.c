@@ -37,3 +37,11 @@ char **callocStringArr(int amount) {
 	}
 	return stringArr;
 }
+
+int getLengthArr(char **stringArr) {
+	int i = 0;
+	while(stringArr[i] != NULL) {		
+		i++;
+	}
+	return i;
+}

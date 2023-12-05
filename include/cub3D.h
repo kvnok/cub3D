@@ -72,6 +72,7 @@ void	freeArr(char **stringArr);
 void	printArr(char **stringArr);
 int		parserError(char *errorText);
 char	**callocStringArr(int amount);
+int		getLengthArr(char **stringArr);
 
 // parserInit.c
 int		parserInit(char **argv, t_parser *p);
