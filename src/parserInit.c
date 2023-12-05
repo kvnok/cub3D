@@ -62,9 +62,9 @@ int parserInit(int argc, char **argv, t_parser *p) {
 	}
 	// printf("%s", str);
 	p->readout = ft_split(str, '\n');
+	free(str);
 	if (p->readout == NULL) {
 		// error out
-		free(str);
 		close(fd);
 		return 1;
 	}
