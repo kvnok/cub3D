@@ -64,9 +64,6 @@ typedef struct s_parser {
 	char		**rawMap;
 }	t_parser;
 
-// parser.c
-int		parser(char **argv, t_parser *p);
-
 // parserUtils.c
 void	freeArr(char **stringArr);
 void	printArr(char **stringArr);
@@ -74,8 +71,24 @@ int		parserError(char *errorText);
 char	**callocStringArr(int amount);
 int		getLengthArr(char **stringArr);
 
-// parserInit.c
+// parser.c
+int		parser(char **argv, t_parser *p);
+
+// pInitMain.c
 int		parserInit(char **argv, t_parser *p);
+
+// pInitAssign.c
+void parserSetNull(t_parser *p);
+void initDict(t_parser *p);
+
+// pInitCheck.c
+int loopThroughElements(char *str, int *elementCount);
+int checkElementCountandNewlines(char *s);
+bool isFileNameCorrect(char *fileName);
+
+// pInitRead.c
+int	fillStringFromFile(char **str, int fd);
+int extractTextFromFile(char **str, t_parser *p);
 
 // parserElements.c
 int		setElements(t_parser *p);

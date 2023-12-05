@@ -3,3 +3,5 @@
 ./cub3D ./maps/example.cub
 # ./cub3D ./maps/spaces_in_map.cub
 # ./cub3D ./maps/test.cub
+# ./cub3D ./maps/tooManyElements.cub
+# ./cub3D ./maps/cantRead.cub

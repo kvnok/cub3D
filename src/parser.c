@@ -9,18 +9,19 @@ might need to copy it over later
 */
 int getRawElementsAndMap(t_parser *p) {
 	int i = 0;
+	int elementAmount = 6;
 	int arrLength = getLengthArr(p->readout);
-	p->rawElements = callocStringArr(6);
+	p->rawElements = callocStringArr(elementAmount);
 	if (p->rawElements == NULL) {
 		return parserError("p->rawElements alloc fail\n");
 	}
-	p->rawMap = callocStringArr(arrLength - 6);
+	p->rawMap = callocStringArr(arrLength - elementAmount);
 	while(p->readout[i] != NULL) {
-		if (i < 6) {
+		if (i < elementAmount) {
 			p->rawElements[i] = p->readout[i];
 		}
 		else {
-			p->rawMap[i-6] = p->readout[i];
+			p->rawMap[i-elementAmount] = p->readout[i];
 		}
 		i++;
 	}
@@ -28,13 +29,12 @@ int getRawElementsAndMap(t_parser *p) {
 }
 
 int parser(char **argv, t_parser *p) {
-	if (parserInit(argv, p) == 1) {
-		return parserError("parserInit() Error!\n");
-	}
+	if (parserInit(argv, p) == 1)
+		return parserError("parserInit() fail\n");
 	// printArr(p->readout);
 	if (getRawElementsAndMap(p) == 1) {
 		freeArr(p->readout);
-		return parserError("getRawElementsAndMap() Error!\n");
+		return parserError("getRawElementsAndMap() fail\n");
 	}
 	// maybe free p->readout and set it to NULL regardless
 	printArr(p->rawElements);

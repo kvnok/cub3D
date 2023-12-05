@@ -18,6 +18,7 @@ void printArr(char **stringArr) {
 }
 
 int parserError(char *errorText) {
+	printf("Error\n");
 	printf("%s", errorText);
 	return 1;
 }
