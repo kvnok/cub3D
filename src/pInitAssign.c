@@ -28,9 +28,9 @@ void initDict(t_parser *p) {
 		p->dict[i].flag = false;
 		p->dict[i].value = NULL;
 		if (i < 4)
-			p->dict[i].func = handleTexturePath;
+			p->dict[i].func = setDictPath;
 		else
-			p->dict[i].func = handleColor;
+			p->dict[i].func = setDictColor;
 		i++;
 	}
 }

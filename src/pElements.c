@@ -1,7 +1,7 @@
 #include "../include/cub3D.h"
 
 // handle color
-int handleColor(t_parser *p, int dictIndex, char *line) {
+int setDictColor(t_parser *p, int dictIndex, char *line) {
 	p->dict[dictIndex].value = line;
 	int i = 0;
 	while(line[i]) {
@@ -18,7 +18,7 @@ spacing
 loop until '\0'
 set in dict key
 */
-int handleTexturePath(t_parser *p, int dictIndex, char *line) {
+int setDictPath(t_parser *p, int dictIndex, char *line) {
 	p->dict[dictIndex].value = line;
 	mlx_texture_t *test;
 	test = mlx_load_png(line);
