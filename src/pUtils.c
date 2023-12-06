@@ -1,72 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   pUtils.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: kkroon <kkroon@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/12/06 16:59:42 by kkroon        #+#    #+#                 */
+/*   Updated: 2023/12/06 16:59:42 by kkroon        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
-void freeArr(char **stringArr) {
-	int i = 0;
-	while(stringArr[i] != NULL) {
-		free(stringArr[i]);
-		i++;
-	}
-	free(stringArr);
-}
+void	free_arr(char **string_arr)
+{
+	int	i;
 
-void printArr(char **stringArr) {
-	int i = 0;
-	while(stringArr[i] != NULL) {
-		printf("%s\n", stringArr[i]);
-		i++;
-	}
-}
-
-int parserError(char *errorText) {
-	printf("Error\n");
-	printf("%s", errorText);
-	return 1;
-}
-
-char **callocStringArr(int amount) {
-	char **stringArr;
-	int i;
-
-	stringArr = malloc((sizeof(char *) + 1) * amount);
-	if (stringArr == NULL) {
-		return NULL;
-	}	
 	i = 0;
-	while(i <= amount) {
-		stringArr[i] = NULL;
+	while (string_arr[i] != NULL)
+	{
+		free(string_arr[i]);
 		i++;
 	}
-	return stringArr;
+	free(string_arr);
 }
 
-int getLengthArr(char **stringArr) {
-	int i = 0;
-	while(stringArr[i] != NULL) {		
+void	print_arr(char **string_arr)
+{
+	int	i;
+
+	i = 0;
+	while (string_arr[i] != NULL)
+	{
+		printf("%s\n", string_arr[i]);
 		i++;
 	}
-	return i;
 }
 
-void printDict(t_parser *p) {
-	int i = 0;
-	while (i < 6) {
-		printf("----------------\n");
-		printf("key:|%s|\n", p->dict[i].key);
-		printf("flag:%d\n", p->dict[i].flag);
-		printf("value:|%s|\n", p->dict[i].value);
-		printf("----------------\n");
+int	parser_error(char *error_text)
+{
+	printf("Error\n");
+	printf("%s", error_text);
+	return (1);
+}
+
+char	**calloc_string_arr(int amount)
+{
+	char	**string_arr;
+	int		i;
+
+	string_arr = malloc((sizeof(char *) + 1) * amount);
+	if (string_arr == NULL)
+		return (NULL);
+	i = 0;
+	while (i <= amount)
+	{
+		string_arr[i] = NULL;
 		i++;
-	}	
+	}
+	return (string_arr);
 }
 
-int32_t pixel_select(int32_t r, int32_t g, int32_t b, int32_t a) {
-	return (r << 24 | g << 16 | b << 8 | a);
-}
+int	get_length_arr(char **string_arr)
+{
+	int	i;
 
-void print_extracted_rgba(int32_t val, char *s) {
-	printf("%s", s);
-	printf("|%d|", ((val >> 24) & 0xFF));
-	printf("%d|", ((val >> 16) & 0xFF));
-	printf("%d|", ((val >> 8) & 0xFF));
-	printf("%d|\n", ((val >> 0) & 0xFF));
+	i = 0;
+	while (string_arr[i] != NULL)
+	{
+		i++;
+	}
+	return (i);
 }

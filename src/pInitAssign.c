@@ -1,36 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   pInitAssign.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: kkroon <kkroon@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/12/06 16:59:21 by kkroon        #+#    #+#                 */
+/*   Updated: 2023/12/06 16:59:21 by kkroon        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3D.h"
 
-void parserSetNull(t_parser *p) {
+void	parser_set_null(t_parser *p)
+{
 	p->filename = NULL;
-	p->pathNorthTexture = NULL;
-	p->pathSouthTexture = NULL;
-	p->pathEastTexture = NULL;
-	p->pathWestTexture = NULL;
-	p->floorColor = 0;
-	p->ceilingColor = 0;
+	p->path_north_texture = NULL;
+	p->path_south_texture = NULL;
+	p->path_east_texture = NULL;
+	p->path_west_texture = NULL;
+	p->floor_color = 0;
+	p->ceiling_color = 0;
 	p->map = NULL;
-	// p->playerPos = NULL;
-	p->startingDir = 0;
+	p->starting_dir = 0;
 	p->readout = NULL;
-	p->rawElements = NULL;
-	p->rawMap = NULL;
+	p->raw_elements = NULL;
+	p->raw_map = NULL;
 }
 
-void initDict(t_parser *p) {
+void	init_dict(t_parser *p)
+{
+	int	i;
+
 	p->dict[N_INDEX].key = NORTH;
 	p->dict[S_INDEX].key = SOUTH;
 	p->dict[E_INDEX].key = EAST;
 	p->dict[W_INDEX].key = WEST;
 	p->dict[F_INDEX].key = FLOOR;
 	p->dict[C_INDEX].key = CEILING;
-	int i = 0;
-	while(i < 6) {
+	i = 0;
+	while (i < 6)
+	{
 		p->dict[i].flag = false;
 		p->dict[i].value = NULL;
 		if (i < 4)
-			p->dict[i].func = setDictPath;
+			p->dict[i].func = set_dict_path;
 		else
-			p->dict[i].func = setDictColor;
+			p->dict[i].func = set_dict_color;
 		i++;
 	}
 }
