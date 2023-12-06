@@ -99,8 +99,8 @@ int		fillStringFromFile(char **str, int fd);
 int		extractTextFromFile(char **str, t_parser *p);
 
 // parserElements.c
-int handleColor(t_parser *p, int dictIndex, char *line);
-int handleTexturePath(t_parser *p, int dictIndex, char *line);
+int		handleColor(t_parser *p, int dictIndex, char *line);
+int		handleTexturePath(t_parser *p, int dictIndex, char *line);
 int		setElementValues(t_parser *p);
 
 #endif
