@@ -20,8 +20,8 @@
 # include "MLX42.h"
 # include "dda.h"
 
-# define SCR_WIDTH 1080
-# define SCR_HEIGHT 740
+# define SCR_WIDTH 1560
+# define SCR_HEIGHT SCR_WIDTH * 3 / 4
 
 # define COL_WALLX 0xFF0000FF
 # define COL_WALLY 0xFF0000AA
@@ -32,6 +32,10 @@ typedef struct s_tmp
 	t_coors_double	player_pos;
 	uint32_t		col_ceiling;
 	uint32_t		col_floor;
+	mlx_texture_t	*tex_north;
+	mlx_texture_t	*tex_east;
+	mlx_texture_t	*tex_south;
+	mlx_texture_t	*tex_west;
 }	t_tmp;
 
 typedef struct s_program
