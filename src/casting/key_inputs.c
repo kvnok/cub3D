@@ -24,12 +24,12 @@ static bool	hitting_wall(int x, int y)
 	return (false);
 }
 
-static void	move_forwards_backwards(t_dda *dda, int direction)
+static void	move_forwards_backwards(t_dda *dda, int dir)
 {
 	t_coors_double	new_pos;
 
-	new_pos.x = dda->player_pos.x + (dda->player_dir.x * MOVESPEED * direction);
-	new_pos.y = dda->player_pos.y + (dda->player_dir.y * MOVESPEED * direction);
+	new_pos.x = dda->player_pos.x + (dda->player_dir.x * MOVESPEED * dir);
+	new_pos.y = dda->player_pos.y + (dda->player_dir.y * MOVESPEED * dir);
 	if (!hitting_wall(new_pos.x, new_pos.y))
 	{
 		dda->player_pos.x = new_pos.x;
@@ -37,17 +37,34 @@ static void	move_forwards_backwards(t_dda *dda, int direction)
 	}
 }
 
-static void	move_left_right(t_dda *dda, int direction)
+static void	move_left_right(t_dda *dda, int dir)
 {
 	t_coors_double	new_pos;
 
-	new_pos.x = dda->player_pos.x - (dda->player_dir.y * MOVESPEED * direction);
-	new_pos.y = dda->player_pos.y + (dda->player_dir.x * MOVESPEED * direction);
+	new_pos.x = dda->player_pos.x - (dda->player_dir.y * MOVESPEED * dir);
+	new_pos.y = dda->player_pos.y + (dda->player_dir.x * MOVESPEED * dir);
 	if (!hitting_wall(new_pos.x, new_pos.y))
 	{
 		dda->player_pos.x = new_pos.x;
 		dda->player_pos.y = new_pos.y;
 	}
+}
+
+static void	turn_left_right(t_dda *dda, int dir)
+{
+	t_coors_double	old_dir;
+	double			old_plane_x;
+
+	old_dir.x = dda->player_dir.x;
+	dda->player_dir.x = dda->player_dir.x * cos(ROTSPEED * dir) - \
+										dda->player_dir.y * sin(ROTSPEED * dir);
+	dda->player_dir.y = old_dir.x * sin(ROTSPEED * dir) + \
+										dda->player_dir.y * cos(ROTSPEED * dir);
+	old_plane_x = dda->plane_x;
+	dda->plane_x = dda->plane_x * cos(ROTSPEED * dir) - \
+											dda->plane_y * sin(ROTSPEED * dir);
+	dda->plane_y = old_plane_x * sin(ROTSPEED * dir) + \
+											dda->plane_y * cos(ROTSPEED * dir);
 }
 
 void	key_input(t_program *data)
@@ -62,8 +79,8 @@ void	key_input(t_program *data)
 		move_forwards_backwards(data->dda, BACK);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
 		move_left_right(data->dda, RIGHT);
-	// if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
-	// 	// turn left
-	// if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
-	// 	// move right
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		turn_left_right(data->dda, LEFT);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		turn_left_right(data->dda, RIGHT);
 }
