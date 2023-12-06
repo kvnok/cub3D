@@ -15,7 +15,7 @@ LIBFT := libft/libft.a
 CC  := cc
 IFLAGS := -Iinclude -I$(MLX42_DIR)/include -I$(LIBFT_DIR)/include
 CFLAGS := #-Wall -Wextra -Werror
-LFLAGS := -L$(MLX42_DIR)/build -lmlx42 -lglfw -ldl -pthread -lm -L$(LIBFT_DIR) -lft #-g3 -fsanitize=address
+LFLAGS := -L$(MLX42_DIR)/build -lmlx42 -lglfw -ldl -pthread -lm -L$(LIBFT_DIR) -lft -g3 -fsanitize=address
 
 _DEBUG := 0
 ifeq ($(_DEBUG),1)

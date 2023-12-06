@@ -28,10 +28,14 @@ int	extract_color(char *line, int32_t *val)
 	{
 		values[i] = ft_atoi(colors[i]);
 		if (values[i] > 255)
+		{
+			free_arr(colors);
 			return (parser_error("color value too big\n"));
+		}
 		i++;
 	}
 	*val = pixel_select(values[0], values[1], values[2], 255);
+	free_arr(colors);
 	return (0);
 }
 

@@ -49,11 +49,11 @@ char	**calloc_string_arr(int amount)
 	char	**string_arr;
 	int		i;
 
-	string_arr = malloc((sizeof(char *) + 1) * amount);
+	string_arr = malloc(sizeof(char *) * amount);
 	if (string_arr == NULL)
 		return (NULL);
 	i = 0;
-	while (i <= amount)
+	while (i < amount)
 	{
 		string_arr[i] = NULL;
 		i++;

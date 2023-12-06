@@ -46,7 +46,7 @@ int	element_match_found(t_parser *p, int j, int i, bool *flag)
 		return (parser_error("duplicate element\n"));
 	p->dict[j].flag = true;
 	*flag = true;
-	if (select_function(p, j, p->readout[i]))
+	if (select_function(p, j, p->raw_elements[i]))
 		return (parser_error("select_function() fail\n"));
 	return (0);
 }
@@ -60,13 +60,13 @@ int	set_element_values(t_parser *p)
 	i = 0;
 	j = 0;
 	flag = false;
-	while (i < 6)
+	while (p->raw_elements[i] != NULL)
 	{
 		j = 0;
 		flag = false;
 		while (j < 6)
 		{
-			if (strncmp(p->dict[j].key, p->readout[i],
+			if (strncmp(p->dict[j].key, p->raw_elements[i],
 					ft_strlen(p->dict[j].key)) == 0)
 				if (element_match_found(p, j, i, &flag))
 					return (parser_error("incorrect element"));

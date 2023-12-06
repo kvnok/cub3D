@@ -44,6 +44,8 @@
 # define F_INDEX 4
 # define C_INDEX 5
 
+# define ELEMENT_AMOUNT 6
+
 typedef struct s_parser	t_parser;
 
 typedef int				(*t_func)(t_parser *, int, char *);

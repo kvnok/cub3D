@@ -22,22 +22,34 @@ might need to copy it over later
 int	get_raw_elements_and_map(t_parser *p)
 {
 	int	i;
-	int	element_amount;
-	int	arr_length;
+	int arr_len;
 
 	i = 0;
-	element_amount = 6;
-	arr_length = get_length_arr(p->readout);
-	p->raw_elements = calloc_string_arr(element_amount);
+	arr_len = get_length_arr(p->readout);
+	if (arr_len < ELEMENT_AMOUNT + 3)
+		return (parser_error("config is too small\n"));
+	p->raw_elements = malloc((ELEMENT_AMOUNT + 1) * sizeof(char *));
 	if (p->raw_elements == NULL)
 		return (parser_error("p->raw_elements alloc fail\n"));
-	p->map = calloc_string_arr(arr_length - element_amount);
+	p->raw_elements[ELEMENT_AMOUNT] = NULL;
+	p->map = malloc((arr_len - ELEMENT_AMOUNT + 1) * sizeof(char *));
+	if (p->map == NULL)
+		return (parser_error("p->map alloc fail\n"));
+	p->map[arr_len - ELEMENT_AMOUNT] = NULL;
 	while (p->readout[i] != NULL)
 	{
-		if (i < element_amount)
-			p->raw_elements[i] = p->readout[i];
+		if (i < ELEMENT_AMOUNT)
+		{
+			p->raw_elements[i] = ft_strdup(p->readout[i]);
+			if (p->raw_elements[i] == NULL)
+				return parser_error("element malloc fail\n");
+		}
 		else
-			p->map[i - element_amount] = p->readout[i];
+		{
+			p->map[i - ELEMENT_AMOUNT] = ft_strdup(p->readout[i]);
+			if (p->map[i - ELEMENT_AMOUNT] == NULL)
+				return parser_error("element malloc fail\n");
+		}
 		i++;
 	}
 	return (0);
