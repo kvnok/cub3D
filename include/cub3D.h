@@ -76,6 +76,8 @@ void	printArr(char **stringArr);
 int		parserError(char *errorText);
 char	**callocStringArr(int amount);
 int		getLengthArr(char **stringArr);
+void	printDict(t_parser *p);
+bool	isTabInside(char *s);
 
 // parser.c
 int		parser(char **argv, t_parser *p);

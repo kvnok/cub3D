@@ -13,6 +13,10 @@ int parserInit(char **argv, t_parser *p) {
 		free(str);
 		return parserError("extractTextFromFile() fail\n");
 	}
+	if (isTabInside(str) == true) {
+		free(str);
+		return parserError("tab found, not allowed!");
+	}
 	if (checkElementCountandNewlines(str) == 1) {
 		free(str);
 		return parserError("checkElementCountandNewlines() fail\n");

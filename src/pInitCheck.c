@@ -60,3 +60,14 @@ bool isFileNameCorrect(char *fileName) {
 	}
 	return false;
 }
+
+bool isTabInside(char *s) {
+	int i = 0;
+	while(s[i]) {
+		if (s[i] == '\t') {
+			return true;
+		}
+		i++;
+	}
+	return false;
+}

@@ -46,3 +46,15 @@ int getLengthArr(char **stringArr) {
 	}
 	return i;
 }
+
+void printDict(t_parser *p) {
+	int i = 0;
+	while (i < 6) {
+		printf("----------------\n");
+		printf("key:|%s|\n", p->dict[i].key);
+		printf("flag:%d\n", p->dict[i].flag);
+		printf("value:|%s|\n", p->dict[i].value);
+		printf("----------------\n");
+		i++;
+	}	
+}
