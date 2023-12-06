@@ -87,8 +87,8 @@ typedef struct s_parser
 	int32_t				floor_color;
 	int32_t				ceiling_color;
 
-	char				**raw_map;
 	char				**map;
+	char				**map_cpy;
 	t_vector			player_pos;
 	char				starting_dir;
 }						t_parser;
@@ -128,5 +128,8 @@ int						extract_text_from_file(char **str, t_parser *p);
 int						set_dict_color(t_parser *p, int dict_index, char *line);
 int						set_dict_path(t_parser *p, int dict_index, char *line);
 int						set_element_values(t_parser *p);
+
+// pMap.c
+int						get_player_from_map(t_parser *p);
 
 #endif

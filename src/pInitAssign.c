@@ -23,9 +23,11 @@ void	parser_set_null(t_parser *p)
 	p->ceiling_color = 0;
 	p->map = NULL;
 	p->starting_dir = 0;
+	p->player_pos.x = -1;
+	p->player_pos.y = -1;
 	p->readout = NULL;
 	p->raw_elements = NULL;
-	p->raw_map = NULL;
+	p->map_cpy = NULL;
 }
 
 void	init_dict(t_parser *p)
