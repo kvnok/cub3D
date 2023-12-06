@@ -15,7 +15,7 @@
 /**
  * @brief The plane vector is set according to the starting direction of the 
  * player.
- * @param pre_dda The pre dda struct containing the "constant" values of dda.
+ * @param dda The dda data.
  */
 static void	set_plane(t_dda *dda)
 {
@@ -48,25 +48,16 @@ static void	set_plane(t_dda *dda)
 
 /**
  * Initializes the pre dda struct containing the "constant" values of dda.
+ * @param dda The dda data struct.
  * @param input The input values.
- * @return The initialized pre dda struct or NULL on error.
  */
 void	pre_dda_init(t_dda *dda, t_tmp input)
 {
-	// t_pre_dda	*pre_dda;
-
-	// pre_dda = (t_pre_dda *)malloc(sizeof(pre_dda));
-	// if (!pre_dda)
-	// {
-	// 	// exit error
-	// 	return (NULL);
-	// }
 	dda->player_dir.x = input.player_dir.x;
 	dda->player_dir.y = input.player_dir.y;
 	dda->player_pos.x = input.player_pos.x;
 	dda->player_pos.y = input.player_pos.y;
 	set_plane(dda);
-	// return (pre_dda);
 }
 
 /**
@@ -85,11 +76,5 @@ t_dda	*dda_init(t_tmp *input)
 		return (NULL);
 	}
 	pre_dda_init(dda, *input);
-	// if (!dda->pre_dda)
-	// {
-	// 	// exit error
-	// 	free(dda);
-	// 	return (NULL);
-	// }
 	return (dda);
 }

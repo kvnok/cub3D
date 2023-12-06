@@ -17,6 +17,13 @@
 #define LEFT -1
 #define RIGHT 1
 
+/**
+ * @brief Checks if the player is hitting a wall.
+ * @param x The x coordinate of the player.
+ * @param y The y coordinate of the player.
+ * @return true If the player is hitting a wall.
+ * @return false If the player is not hitting a wall.
+ */
 static bool	hitting_wall(int x, int y)
 {
 	if (world_map[y][x] != '0')
@@ -24,6 +31,11 @@ static bool	hitting_wall(int x, int y)
 	return (false);
 }
 
+/**
+ * @brief Moves the player forwards or backwards.
+ * @param dda The dda data struct.
+ * @param dir The direction to move to.
+ */
 static void	move_forwards_backwards(t_dda *dda, int dir)
 {
 	t_coors_double	new_pos;
@@ -37,6 +49,11 @@ static void	move_forwards_backwards(t_dda *dda, int dir)
 	}
 }
 
+/**
+ * @brief Moves the player left or right.
+ * @param dda The dda data struct.
+ * @param dir The direction to move to.
+ */
 static void	move_left_right(t_dda *dda, int dir)
 {
 	t_coors_double	new_pos;
@@ -50,6 +67,11 @@ static void	move_left_right(t_dda *dda, int dir)
 	}
 }
 
+/**
+ * @brief Turns the player to the left or right.
+ * @param dda The dda data struct.
+ * @param dir The direction to turn to.
+ */
 static void	turn_left_right(t_dda *dda, int dir)
 {
 	t_coors_double	old_dir;
@@ -67,6 +89,10 @@ static void	turn_left_right(t_dda *dda, int dir)
 											dda->plane_y * cos(ROTSPEED * dir);
 }
 
+/**
+ * @brief Checks if a key is pressed and executes the right function.
+ * @param data The program data struct.
+ */
 void	key_input(t_program *data)
 {
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))

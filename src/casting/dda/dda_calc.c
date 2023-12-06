@@ -12,6 +12,10 @@
 
 #include "cub3D.h"
 
+/**
+ * @brief Sets the correct step and sidedist according to the ray direction.
+ * @param dda The dda data struct.
+ */
 static void	set_step_and_sidedist(t_dda *dda)
 {
 	if (dda->ray_dir.x < 0)
@@ -40,6 +44,11 @@ static void	set_step_and_sidedist(t_dda *dda)
 	}
 }
 
+/**
+ * @brief Sends the ray in steps till a wall is hit to determine how far away 
+ * it is.
+ * @param dda The dda data struct.
+ */
 static void	loop_till_collision(t_dda *dda)
 {
 	bool	hit;
@@ -64,6 +73,11 @@ static void	loop_till_collision(t_dda *dda)
 	}
 }
 
+/**
+ * @brief Calculates the values for a given x axis on the screen.
+ * @param dda The dda data struct.
+ * @param x the x value of the screen.
+ */
 void	dda_per_x(t_dda *dda, int x)
 {
 	dda->camera_x = 2 * (x / (double)SCR_WIDTH) - 1;
@@ -85,6 +99,10 @@ void	dda_per_x(t_dda *dda, int x)
 	loop_till_collision(dda);
 }
 
+/**
+ * @brief Calculates the location where to put pixels for the wall.
+ * @param dda The dda data struct.
+ */
 void	draw_info_calc(t_dda *dda)
 {
 	double	perp_wall_dist;

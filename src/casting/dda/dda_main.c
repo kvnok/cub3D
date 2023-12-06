@@ -40,7 +40,11 @@ char	world_map[MAP_HEIGHT][MAP_WIDTH] =
 	{'1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1'}
 };
 
-void	reset_img(t_program *data)
+/**
+ * @brief Deletes and initializes a new instance of an image.
+ * @param data The program data struct.
+ */
+static void	reset_img(t_program *data)
 {
 	if (data->img)
 		mlx_delete_image(data->mlx, data->img);
@@ -57,7 +61,13 @@ void	reset_img(t_program *data)
 	}
 }
 
-static void	pixels_to_image(t_program *data)
+/**
+ * @brief Loops over all the coordinates putting the correct pixel in the 
+ * correct coordinate from the buffer
+ * @param img_buffer The buffer containing the 2D uint32_t array
+ * @param img The image the uint32_t values should be put on
+ */
+static void	pixels_to_image(uint32_t **img_buffer, mlx_image_t *img)
 {
 	int	y;
 	int	x;
@@ -68,13 +78,18 @@ static void	pixels_to_image(t_program *data)
 		x = 0;
 		while (x < SCR_WIDTH)
 		{
-			mlx_put_pixel(data->img, x, y, data->img_buffer[y][x]);
+			mlx_put_pixel(img, x, y, img_buffer[y][x]);
 			x++;
 		}
 		y++;
 	}
 }
 
+/**
+ * @brief The main dda loop, calculating the pixel values for every x value.
+ * @param param The parameter given to mlx_loop_hook 
+ * (should be the program data struct)
+ */
 void	dda_loop(void *param)
 {
 	t_program	*data;
@@ -90,6 +105,6 @@ void	dda_loop(void *param)
 		fill_buffer(data->input, data->img_buffer, data->dda, x);
 		x++;
 	}
-	pixels_to_image(data);
+	pixels_to_image(data->img_buffer, data->img);
 	key_input(data);
 }

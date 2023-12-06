@@ -12,6 +12,10 @@
 
 #include "cub3D.h"
 
+/**
+ * @brief Allocates memory for the buffer.
+ * @param data The program data struct.
+ */
 void	img_buffer_init(t_program *data)
 {
 	int	y;
@@ -35,6 +39,14 @@ void	img_buffer_init(t_program *data)
 	}
 }
 
+/**
+ * @brief Fills the buffer with the right uint32_t values for the floor and 
+ * ceiling.
+ * @param data The program data struct.
+ * @param buff The uint32_t 2D array.
+ * @param dda The dda data struct.
+ * @param x The current x on the screen to calculate.
+ */
 static void	fill_floor_ceiling(t_tmp *data, uint32_t **buff, t_dda *dda, int x)
 {
 	int	y;
@@ -53,6 +65,12 @@ static void	fill_floor_ceiling(t_tmp *data, uint32_t **buff, t_dda *dda, int x)
 	}
 }
 
+/**
+ * @brief Fills the buffer with the right uint32_t values for the wall.
+ * @param buffer The uint32_t 2D array.
+ * @param dda The dda data struct.
+ * @param x The current x on the screen to calculate.
+ */
 static void	fill_wall(uint32_t **buffer, t_dda *dda, int x)
 {
 	int	y;
@@ -68,6 +86,13 @@ static void	fill_wall(uint32_t **buffer, t_dda *dda, int x)
 	}
 }
 
+/**
+ * @brief Wrapper function to fill the buffer with the right uint32_t values.
+ * @param input The input values (containing the floor and ceiling colours).
+ * @param buffer The uint32_t 2D array.
+ * @param dda The dda data struct.
+ * @param x The current x on the screen to calculate.
+ */
 void	fill_buffer(t_tmp *input, uint32_t **buffer, t_dda *dda, int x)
 {
 	fill_floor_ceiling(input, buffer, dda, x);
