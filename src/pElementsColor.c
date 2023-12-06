@@ -55,10 +55,10 @@ int	set_dict_color(t_parser *p, int dict_index, char *line)
 		i++;
 	}
 	if (dict_index == F_INDEX)
-		if (extract_color(line, &p->floor_color) == 1)
+		if (extract_color(line, &p->floor_color))
 			return (parser_error("incorrect floor_color\n"));
 	if (dict_index == C_INDEX)
-		if (extract_color(line, &p->ceiling_color) == 1)
+		if (extract_color(line, &p->ceiling_color))
 			return (parser_error("incorrect ceiling_color\n"));
 	return (0);
 }

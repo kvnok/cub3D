@@ -45,11 +45,11 @@ int	get_raw_elements_and_map(t_parser *p)
 
 int	parser(char **argv, t_parser *p)
 {
-	if (parser_init(argv, p) == 1)
+	if (parser_init(argv, p))
 		return (parser_error("parser_init() fail\n"));
-	if (get_raw_elements_and_map(p) == 1)
+	if (get_raw_elements_and_map(p))
 		return (parser_error("get_raw_elements_and_map() fail\n"));
-	if (set_element_values(p) == 1)
+	if (set_element_values(p))
 		return (parser_error("set_element_values() fail\n"));
 	print_extracted_rgba(p->floor_color, "F: ");
 	print_extracted_rgba(p->ceiling_color, "C: ");

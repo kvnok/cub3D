@@ -49,7 +49,7 @@ int	extract_text_from_file(char **str, t_parser *p)
 	{
 		return (parser_error("fd < 0\n"));
 	}
-	if (fill_string_from_file(str, fd) == 1)
+	if (fill_string_from_file(str, fd))
 	{
 		close(fd);
 		return (parser_error("fill_string_from_file() fail\n"));

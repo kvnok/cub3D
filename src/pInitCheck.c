@@ -18,7 +18,7 @@ int	loop_through_elements(char *str, int *element_count)
 	int	i;
 
 	i = 1;
-	if (ft_isalpha(str[0]) == 1)
+	if (ft_isalpha(str[0]))
 		(*element_count)++;
 	while (str[i])
 	{

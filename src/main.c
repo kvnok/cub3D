@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (parser_error("argc != 2\n"));
-	if (parser(argv, &p) == 1)
+	if (parser(argv, &p))
 	{
 		free_arr(p.readout);
 		return (parser_error("parser() fail\n"));

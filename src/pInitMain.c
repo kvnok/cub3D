@@ -30,11 +30,11 @@ int	parser_init(char **argv, t_parser *p)
 	str = ft_calloc(sizeof(char *) + 1, 1);
 	if (str == NULL)
 		return (parser_error("str ft_calloc() fail\n"));
-	if (extract_text_from_file(&str, p) == 1)
+	if (extract_text_from_file(&str, p))
 		return (p_init_error_out(str, "extract_text_from_file() fail\n"));
 	if (is_tab_inside(str) == true)
 		return (p_init_error_out(str, "tab found, not allowed!\n"));
-	if (check_element_count_and_newlines(str) == 1)
+	if (check_element_count_and_newlines(str))
 		return (p_init_error_out(str, "count_elements fail\n"));
 	p->readout = ft_split(str, '\n');
 	free(str);
