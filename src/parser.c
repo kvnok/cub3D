@@ -46,5 +46,8 @@ int parser(char **argv, t_parser *p) {
 		return parserError("setElementValues() fail\n");
 	}
 	// printDict(p);
+	// printf("F Raw:%d\n", p->floorColor);
+	// print_extracted_rgba(p->floorColor, "F: ");
+	// print_extracted_rgba(p->ceilingColor, "C: ");
 	return 0;
 }

@@ -17,12 +17,12 @@ void parserSetNull(t_parser *p) {
 }
 
 void initDict(t_parser *p) {
-	p->dict[0].key = NORTH;
-	p->dict[1].key = SOUTH;
-	p->dict[2].key = EAST;
-	p->dict[3].key = WEST;
-	p->dict[4].key = FLOOR;
-	p->dict[5].key = CEILING;
+	p->dict[N_INDEX].key = NORTH;
+	p->dict[S_INDEX].key = SOUTH;
+	p->dict[E_INDEX].key = EAST;
+	p->dict[W_INDEX].key = WEST;
+	p->dict[F_INDEX].key = FLOOR;
+	p->dict[C_INDEX].key = CEILING;
 	int i = 0;
 	while(i < 6) {
 		p->dict[i].flag = false;

@@ -24,6 +24,13 @@
 #define FLOOR "F "
 #define CEILING "C "
 
+#define N_INDEX 0
+#define S_INDEX 1
+#define E_INDEX 2
+#define W_INDEX 3
+#define F_INDEX 4
+#define C_INDEX 5
+
 typedef struct s_parser t_parser;
 
 typedef int (*func)(t_parser *, int, char *);
@@ -57,8 +64,8 @@ typedef struct s_parser {
 	char		*pathSouthTexture;
 	char		*pathEastTexture;
 	char		*pathWestTexture;
-	int			floorColor;
-	int			ceilingColor;
+	int32_t		floorColor;
+	int32_t		ceilingColor;
 	char		**map;
 	t_vector	playerPos;
 	char		startingDir;
@@ -78,6 +85,8 @@ char	**callocStringArr(int amount);
 int		getLengthArr(char **stringArr);
 void	printDict(t_parser *p);
 bool	isTabInside(char *s);
+int32_t pixel_select(int32_t r, int32_t g, int32_t b, int32_t a);
+void print_extracted_rgba(int32_t val, char *s);
 
 // parser.c
 int		parser(char **argv, t_parser *p);
