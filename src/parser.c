@@ -37,11 +37,11 @@ int parser(char **argv, t_parser *p) {
 	}
 	// maybe free p->readout and set it to NULL regardless
 	// prob free p->readout at the complete end
-	// printf("-----------------\n");
-	// printArr(p->rawElements);
-	// printf("-----------------\n");
-	// printArr(p->rawMap);
-	// printf("-----------------\n");
+	printf("-----------------\n");
+	printArr(p->rawElements);
+	printf("-----------------\n");
+	printArr(p->rawMap);
+	printf("-----------------\n");
 	if (setElementValues(p) == 1) {
 		return parserError("setElementValues() fail\n");
 	}
@@ -49,5 +49,6 @@ int parser(char **argv, t_parser *p) {
 	// printf("F Raw:%d\n", p->floorColor);
 	// print_extracted_rgba(p->floorColor, "F: ");
 	// print_extracted_rgba(p->ceilingColor, "C: ");
+	
 	return 0;
 }

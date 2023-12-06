@@ -60,21 +60,21 @@ player starting direction
 */
 typedef struct s_parser {
 	char		*filename;
+	char		**readout;
+
+	char		**rawElements;
+	dict		dict[6];
 	char		*pathNorthTexture;
 	char		*pathSouthTexture;
 	char		*pathEastTexture;
 	char		*pathWestTexture;
 	int32_t		floorColor;
 	int32_t		ceilingColor;
+
+	char		**rawMap;
 	char		**map;
 	t_vector	playerPos;
 	char		startingDir;
-
-	char		**readout;
-	dict		dict[6];
-
-	char		**rawElements;
-	char		**rawMap;
 }	t_parser;
 
 // parserUtils.c
