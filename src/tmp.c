@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ddamain.c                                          :+:    :+:            */
+/*   tmp.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ovan-rhe <ovan-rhe@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/12/04 16:43:51 by ovan-rhe      #+#    #+#                 */
-/*   Updated: 2023/12/04 16:43:51 by ovan-rhe      ########   odam.nl         */
+/*   Created: 2023/12/06 15:25:05 by ovan-rhe      #+#    #+#                 */
+/*   Updated: 2023/12/06 15:25:05 by ovan-rhe      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "dda.h"
 
-void	ddaMain(void)
+t_tmp	*set_tmp_init(void)
 {
-	printf("empty\n");
+	t_tmp	*tmp = (t_tmp *)malloc(sizeof(t_tmp));
+
+	tmp->player_dir.x = 0;
+	tmp->player_dir.y = -1;
+	tmp->player_pos.x = 12;
+	tmp->player_pos.y = 12;
+	tmp->col_ceiling = 0x000000FF;
+	tmp->col_floor = 0x794B26FF;
+	return (tmp);
+}
+
+int	print_error(const char *errorMsg)
+{
+	printf("%s\n", errorMsg);
+	return (1);
 }

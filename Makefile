@@ -3,7 +3,13 @@ SHELL := /bin/bash
 NAME := cub3D
 
 SRC_FILES	:=	main.c			\
-				dda/ddamain.c
+				init_cleanup.c	\
+				casting/dda/dda_main.c	\
+				casting/dda/dda_calc.c	\
+				casting/dda/dda_init.c	\
+				casting/buffer.c		\
+				\
+				tmp.c
 
 SRC_DIR := src
 OBJ_DIR := obj
@@ -20,13 +26,13 @@ MLX42 := $(MLX42_DIR)/build/libmlx42.a
 
 CC  := cc
 
-IFLAGS := -I $(INC_DIR) -I $(MLX_DIR)/include
+IFLAGS := -I $(INC_DIR) -I $(MLX_DIR)/include/$(MLX_DIR)
 LFLAGS := -L $(MLX_DIR)/build -lmlx42 -lglfw -ldl -pthread -lm
-CFLAGS := -Wall -Wextra -Werror -MMD -MP
+CFLAGS := -Wall -Wextra -Werror -MMD -MP -g
 
 _DEBUG := 0
 ifeq ($(_DEBUG),1)
-	CFLAGS += -g3 -fsanitize=address
+	LFLAGS += -g3 -fsanitize=address
 endif
 
 all: $(MLX42) $(NAME)
