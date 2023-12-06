@@ -24,7 +24,7 @@
 # define SCR_HEIGHT 740
 
 # define COL_WALLX 0xFF0000FF
-# define COL_WALLY 0x8B0000FF
+# define COL_WALLY 0xFF0000AA
 
 typedef struct s_tmp
 {
@@ -43,14 +43,20 @@ typedef struct s_program
 	t_tmp		*input;
 }	t_program;
 
-void		dda_loop(void *param);
-void		img_buffer_init(t_program *data);
-t_dda		*dda_init(t_tmp *input);
-void		fill_buffer(t_tmp *input, uint32_t **buffer, t_dda *dda, int x);
+/* general--------------------------------------------------------------------*/
+
 t_program	*data_init(void);
 void		cleanup(t_program *data, int exitCode);
 
+/* casting--------------------------------------------------------------------*/
+
+t_dda		*dda_init(t_tmp *input);
+void		img_buffer_init(t_program *data);
+void		fill_buffer(t_tmp *input, uint32_t **buffer, t_dda *dda, int x);
+void		key_input(t_program *data);
+
 /* temp-----------------------------------------------------------------------*/
+
 t_tmp		*set_tmp_init(void);
 int			print_error(const char *errorMsg);
 

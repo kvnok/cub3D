@@ -23,6 +23,9 @@
 # define MAP_WIDTH 24
 # define MAP_HEIGHT 24
 
+# define MOVESPEED 0.15
+# define ROTSPEED 0.08
+
 extern char	world_map[MAP_HEIGHT][MAP_WIDTH];
 
 typedef struct s_vector

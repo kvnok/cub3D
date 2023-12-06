@@ -8,6 +8,7 @@ SRC_FILES	:=	main.c			\
 				casting/dda/dda_calc.c	\
 				casting/dda/dda_init.c	\
 				casting/buffer.c		\
+				casting/key_inputs.c	\
 				\
 				tmp.c
 
