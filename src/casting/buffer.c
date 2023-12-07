@@ -47,20 +47,20 @@ void	img_buffer_init(t_program *data)
  * @param dda The dda data struct.
  * @param x The current x on the screen to calculate.
  */
-static void	fill_floor_ceiling(t_tmp *data, uint32_t **buff, t_dda *dda, int x)
+static void	fill_floor_ceiling(uint32_t **buff, t_dda *dda, int x)
 {
 	int	y;
 
 	y = 0;
 	while (y < dda->draw_info.draw_start && y < SCR_HEIGHT)
 	{
-		buff[y][x] = data->col_ceiling;
+		buff[y][x] = dda->input.ceiling_color;
 		y++;
 	}
 	y = dda->draw_info.draw_end + 1;
 	while (y < SCR_HEIGHT)
 	{
-		buff[y][x] = data->col_floor;
+		buff[y][x] = dda->input.floor_color;
 		y++;
 	}
 }
@@ -93,8 +93,8 @@ static void	fill_wall(uint32_t **buffer, t_dda *dda, int x)
  * @param dda The dda data struct.
  * @param x The current x on the screen to calculate.
  */
-void	fill_buffer(t_tmp *input, uint32_t **buffer, t_dda *dda, int x)
+void	fill_buffer(uint32_t **buffer, t_dda *dda, int x)
 {
-	fill_floor_ceiling(input, buffer, dda, x);
+	fill_floor_ceiling(buffer, dda, x);
 	fill_wall(buffer, dda, x);
 }

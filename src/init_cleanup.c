@@ -12,6 +12,40 @@
 
 #include "cub3D.h"
 
+/**
+ * @brief Initialize the mlx and image struct.
+ * @param data The program data struct.
+ * @return 0 on success, 1 on failure.
+ */
+static int	init_img_and_mlx(t_program *data)
+{
+	data->mlx = mlx_init(SCR_WIDTH, SCR_HEIGHT, "cub3d", true);
+	if (!data->mlx)
+	{
+		print_error("Error\nmlx_init() failure\n");
+		return (1);
+	}
+	data->img = mlx_new_image(data->mlx, SCR_WIDTH, SCR_HEIGHT);
+	if (!data->img)
+	{
+		print_error("Error\nmlx_new_image() failure\n");
+		mlx_terminate(data->mlx);
+		return (1);
+	}
+	if (mlx_image_to_window(data->mlx, data->img, 0, 0) == -1)
+	{
+		print_error("Error\nmlx_image_to_window() failure\n");
+		mlx_delete_image(data->mlx, data->img);
+		mlx_terminate(data->mlx);
+		return (1);
+	}
+	return (0);
+}
+
+/**
+ * @brief Initializes the program data struct.
+ * @param data The program data struct.
+ */
 t_program	*data_init(void)
 {
 	t_program	*data;
@@ -22,24 +56,19 @@ t_program	*data_init(void)
 		print_error("Error\nmalloc() failure\n");
 		return (NULL);
 	}
-	data->mlx = mlx_init(SCR_WIDTH, SCR_HEIGHT, "cub3d", true);
-	if (!data->mlx)
-	{
-		print_error("Error\nmlx_init() failure\n");
-		free(data);
+	if (init_img_and_mlx(data))
 		return (NULL);
-	}
 	img_buffer_init(data);
-	data->img = mlx_new_image(data->mlx, SCR_WIDTH, SCR_HEIGHT);
-	if (data->img)
-		printf("img created!\n");
-	mlx_image_to_window(data->mlx, data->img, 0, 0);
 	data->dda = NULL;
-	data->input = NULL;
 	return (data);
 }
 
-void	cleanup(t_program *data, int exitCode)
+/**
+ * @brief Cleans up the program data struct and exits the program.
+ * @param data The program data struct.
+ * @param exit_code The exit code.
+ */
+void	cleanup(t_program *data, int exit_code)
 {
 	int	y;
 
@@ -51,7 +80,6 @@ void	cleanup(t_program *data, int exitCode)
 	}
 	free(data->img_buffer);
 	free(data->dda);
-	free(data->input);
 	mlx_delete_image(data->mlx, data->img);
 	if (data->mlx)
 	{
@@ -59,5 +87,5 @@ void	cleanup(t_program *data, int exitCode)
 		mlx_terminate(data->mlx);
 	}
 	free(data);
-	exit(exitCode);
+	exit(exit_code);
 }

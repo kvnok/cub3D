@@ -68,7 +68,7 @@ static void	loop_till_collision(t_dda *dda)
 			dda->map_pos.y += dda->step_map_y;
 			dda->current_side = Y_SIDE;
 		}
-		if (world_map[dda->map_pos.y][dda->map_pos.x] == '1')
+		if (dda->input.map[dda->map_pos.y][dda->map_pos.x] == '1')
 			hit = true;
 	}
 }

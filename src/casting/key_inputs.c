@@ -24,9 +24,9 @@
  * @return true If the player is hitting a wall.
  * @return false If the player is not hitting a wall.
  */
-static bool	hitting_wall(int x, int y)
+static bool	hitting_wall(t_dda *dda, int x, int y)
 {
-	if (world_map[y][x] != '0')
+	if (dda->input.map[y][x] != '0')
 		return (true);
 	return (false);
 }
@@ -42,7 +42,7 @@ static void	move_forwards_backwards(t_dda *dda, int dir)
 
 	new_pos.x = dda->player_pos.x + (dda->player_dir.x * MOVESPEED * dir);
 	new_pos.y = dda->player_pos.y + (dda->player_dir.y * MOVESPEED * dir);
-	if (!hitting_wall(new_pos.x, new_pos.y))
+	if (!hitting_wall(dda, new_pos.x, new_pos.y))
 	{
 		dda->player_pos.x = new_pos.x;
 		dda->player_pos.y = new_pos.y;
@@ -60,7 +60,7 @@ static void	move_left_right(t_dda *dda, int dir)
 
 	new_pos.x = dda->player_pos.x - (dda->player_dir.y * MOVESPEED * dir);
 	new_pos.y = dda->player_pos.y + (dda->player_dir.x * MOVESPEED * dir);
-	if (!hitting_wall(new_pos.x, new_pos.y))
+	if (!hitting_wall(dda, new_pos.x, new_pos.y))
 	{
 		dda->player_pos.x = new_pos.x;
 		dda->player_pos.y = new_pos.y;

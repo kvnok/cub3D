@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-void free_parser_vars(t_parser *p)
+void	free_parser_vars(t_parser *p)
 {
 	if (p->raw_elements != NULL)
 		free_arr(p->raw_elements);
@@ -37,10 +37,7 @@ int	main(int argc, char **argv)
 	data = data_init();
 	if (!data)
 		return (EXIT_FAILURE);
-// temporary input generator----------------------------------------------------
-	data->input = set_tmp_init();///////////////////////////////////////////////
-// -----------------------------------------------------------------------------
-	data->dda = dda_init(data->input);
+	data->dda = dda_init(p);
 	if (!data->dda)
 		cleanup(data, EXIT_FAILURE);
 	mlx_loop_hook(data->mlx, &dda_loop, (void *)data);
