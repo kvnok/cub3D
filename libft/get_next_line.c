@@ -49,7 +49,7 @@ char	*save(char **line, char **afternewline)
 		return (NULL);
 	*afternewline = cut_free(line, spot + 1, linelen - spot, afternewline);
 	if (*afternewline == NULL)
-		return (cleanup(line, afternewline));
+		return (gnl_cleanup(line, afternewline));
 	line[0][spot + 1] = '\0';
 	return (*afternewline);
 }
@@ -85,20 +85,20 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = malloc_and_bzero((BUFFER_SIZE + 1), 1);
 	if (line == NULL)
-		return (cleanup(&line, &afternewline));
+		return (gnl_cleanup(&line, &afternewline));
 	if (afternewline != NULL)
 	{
 		line = strjoin_free(&line, &afternewline);
 		if (line == NULL)
-			return (cleanup(&line, &afternewline));
+			return (gnl_cleanup(&line, &afternewline));
 		afternewline[0] = '\0';
 	}
 	if (reading(fd, buffer, &line, &afternewline) == NULL)
 	{
 		buffer[0] = '\0';
-		return (cleanup(&line, &afternewline));
+		return (gnl_cleanup(&line, &afternewline));
 	}
 	if (line[0] == '\0')
-		return (cleanup(&line, &afternewline));
+		return (gnl_cleanup(&line, &afternewline));
 	return (line);
 }

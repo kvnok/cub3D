@@ -28,6 +28,6 @@ int		int_strlen(char *s);
 void	*malloc_and_bzero(int count, int size);
 char	*cut_free(char **s, int start, int len, char **extra);
 int		find_newline(char *s);
-char	*cleanup(char **storage, char **leftover);
+char	*gnl_cleanup(char **storage, char **leftover);
 
 #endif

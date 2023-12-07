@@ -3,32 +3,35 @@
 /*                                                        ::::::::            */
 /*   cub3D.h                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: kkroon <kkroon@student.codam.nl>             +#+                     */
+/*   By: ovan-rhe <ovan-rhe@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/12/06 16:58:01 by kkroon        #+#    #+#                 */
-/*   Updated: 2023/12/06 16:58:01 by kkroon        ########   odam.nl         */
+/*   Created: 2023/12/06 15:17:25 by ovan-rhe      #+#    #+#                 */
+/*   Updated: 2023/12/06 15:17:25 by ovan-rhe      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../MLX42/include/MLX42/MLX42_Int.h"
-# include "../libft/libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <unistd.h>
+
+# include "MLX42.h"
+# include "MLX42_Int.h"
+# include "libft.h"
+# include "dda.h"
+
+// parser-----------------------------------------------------------------------
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
 # include <sys/types.h>
 # include <time.h>
-# include <unistd.h>
 
 # define NORTH "NO "
 # define SOUTH "SO "
@@ -59,12 +62,6 @@ typedef struct s_dict
 	char				*value;
 	t_func				func;
 }						t_dict;
-
-typedef struct s_vector
-{
-	int					x;
-	int					y;
-}						t_vector;
 
 /*
 filename.cub
@@ -133,5 +130,51 @@ int						set_element_values(t_parser *p);
 
 // pMap.c
 int						get_player_from_map(t_parser *p);
+
+// parser-----------------------------------------------------------------------
+
+# define SCR_WIDTH 1560
+# define SCR_HEIGHT SCR_WIDTH * 3 / 4
+
+# define COL_WALLX 0xFF0000FF
+# define COL_WALLY 0xFF0000AA
+
+typedef struct s_tmp
+{
+	t_vector		player_dir;
+	t_coors_double	player_pos;
+	uint32_t		col_ceiling;
+	uint32_t		col_floor;
+	mlx_texture_t	*tex_north;
+	mlx_texture_t	*tex_east;
+	mlx_texture_t	*tex_south;
+	mlx_texture_t	*tex_west;
+}	t_tmp;
+
+typedef struct s_program
+{
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	uint32_t	**img_buffer;
+	t_dda		*dda;
+	t_tmp		*input;
+}	t_program;
+
+/* general--------------------------------------------------------------------*/
+
+t_program	*data_init(void);
+void		cleanup(t_program *data, int exitCode);
+
+/* casting--------------------------------------------------------------------*/
+
+t_dda		*dda_init(t_tmp *input);
+void		img_buffer_init(t_program *data);
+void		fill_buffer(t_tmp *input, uint32_t **buffer, t_dda *dda, int x);
+void		key_input(t_program *data);
+
+/* temp-----------------------------------------------------------------------*/
+
+t_tmp		*set_tmp_init(void);
+int			print_error(const char *errorMsg);
 
 #endif

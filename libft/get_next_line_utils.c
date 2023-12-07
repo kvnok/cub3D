@@ -76,7 +76,7 @@ int	find_newline(char *s)
 	return (-1);
 }
 
-char	*cleanup(char **storage, char **leftover)
+char	*gnl_cleanup(char **storage, char **leftover)
 {
 	if (*storage != NULL)
 	{

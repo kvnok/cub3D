@@ -1,0 +1,11 @@
+# Prerequisites
+*.d
+
+# Object files
+*.o
+
+# Archives
+*.a
+
+# Debug files
+.vscode
