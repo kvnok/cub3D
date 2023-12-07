@@ -26,6 +26,9 @@
 # define MOVESPEED 0.15
 # define ROTSPEED 0.08
 
+# define COL_WALLX 0xFF0000FF
+# define COL_WALLY 0xFF0000AA
+
 typedef struct s_vector
 {
 	double	x;
