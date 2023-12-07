@@ -23,10 +23,11 @@
 # define MAP_WIDTH 24
 # define MAP_HEIGHT 24
 
-# define MOVESPEED 0.15
+# define MOVESPEED 0.12
 # define ROTSPEED 0.08
 
-extern char	world_map[MAP_HEIGHT][MAP_WIDTH];
+# define COL_WALLX 0xFF0000FF
+# define COL_WALLY 0xFF0000AA
 
 typedef struct s_vector
 {
@@ -46,14 +47,6 @@ typedef struct s_coors_int
 	int	y;
 }	t_coors_int;
 
-typedef struct s_pre_dda
-{
-	double			plane_x;
-	double			plane_y;
-	t_coors_double	player_pos;
-	t_vector		player_dir;
-}	t_pre_dda;
-
 typedef struct s_draw_info
 {
 	int		line_height;
@@ -61,24 +54,39 @@ typedef struct s_draw_info
 	int		draw_end;
 }	t_draw_info;
 
+typedef struct	s_input_constants
+{
+	char				*path_north_texture;
+	char				*path_south_texture;
+	char				*path_east_texture;
+	char				*path_west_texture;
+
+	int32_t				floor_color;
+	int32_t				ceiling_color;
+
+	char				**map;
+}	t_input_constants;
+
 typedef struct s_dda
 {
-	// t_pre_dda		*pre_dda;
-	double			plane_x;
-	double			plane_y;
-	t_coors_double	player_pos;
-	t_vector		player_dir;
-	double			camera_x;
-	t_vector		ray_dir;
-	t_coors_int		map_pos;
-	double			delta_dist_x;
-	double			delta_dist_y;
-	int				step_map_x;
-	int				step_map_y;
-	double			side_dist_x;
-	double			side_dist_y;
-	int				current_side;
-	t_draw_info		draw_info;
+	double				plane_x;
+	double				plane_y;
+	t_coors_double		player_pos;
+	t_vector			player_dir;
+
+	t_input_constants	input;
+
+	double				camera_x;
+	t_vector			ray_dir;
+	t_coors_int			map_pos;
+	double				delta_dist_x;
+	double				delta_dist_y;
+	int					step_map_x;
+	int					step_map_y;
+	double				side_dist_x;
+	double				side_dist_y;
+	int					current_side;
+	t_draw_info			draw_info;
 }	t_dda;
 
 /* functions ---------------------------------------------------------------- */

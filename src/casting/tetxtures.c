@@ -12,3 +12,7 @@
 
 #include "cub3D.h"
 
+void	textures(void)
+{
+	printf("hey\n");
+}
