@@ -122,6 +122,9 @@ bool					is_file_name_correct(char *fileName);
 int						fill_string_from_file(char **str, int fd);
 int						extract_text_from_file(char **str, t_parser *p);
 
+// pGetRawData.c
+int						get_raw_elements_and_map(t_parser *p);
+
 // pElements.c
 int						set_dict_color(t_parser *p, int dict_index, char *line);
 int						set_dict_path(t_parser *p, int dict_index, char *line);
@@ -131,7 +134,7 @@ int						set_element_values(t_parser *p);
 int						get_player_from_map(t_parser *p);
 
 // pMapError.c
-int 					map_error_check(t_parser *p);
+int						map_error_check(t_parser *p);
 
 // parser-----------------------------------------------------------------------
 

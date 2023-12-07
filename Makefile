@@ -17,6 +17,7 @@ SRC_FILES	:=	main.c			\
 				parser/pInitCheck.c		\
 				parser/pInitMain.c		\
 				parser/pInitRead.c		\
+				parser/pGetRawData.c	\
 				parser/pMap.c			\
 				parser/pMapError.c		\
 				parser/pUtils.c			\
