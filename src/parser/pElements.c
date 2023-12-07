@@ -51,6 +51,18 @@ int	element_match_found(t_parser *p, int j, int i, bool *flag)
 	return (0);
 }
 
+	// printf("%s\n", p->path_north_texture);
+	// printf("%s\n", p->path_south_texture);
+	// printf("%s\n", p->path_east_texture);
+	// printf("%s\n", p->path_west_texture);
+static void set_paths_from_dict(t_parser *p)
+{
+	p->path_north_texture = p->dict[N_INDEX].value;
+	p->path_south_texture = p->dict[S_INDEX].value;
+	p->path_east_texture = p->dict[E_INDEX].value;
+	p->path_west_texture = p->dict[W_INDEX].value;
+}
+
 int	set_element_values(t_parser *p)
 {
 	int		i;
@@ -76,5 +88,6 @@ int	set_element_values(t_parser *p)
 			return (parser_error("no element match found\n"));
 		i++;
 	}
+	set_paths_from_dict(p);
 	return (0);
 }

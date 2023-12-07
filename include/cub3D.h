@@ -87,7 +87,6 @@ typedef struct s_parser
 	int32_t				ceiling_color;
 
 	char				**map;
-	char				**map_cpy;
 	t_vector			player_pos;
 	char				starting_dir;
 }						t_parser;
@@ -130,6 +129,9 @@ int						set_element_values(t_parser *p);
 
 // pMap.c
 int						get_player_from_map(t_parser *p);
+
+// pMapError.c
+int 					map_error_check(t_parser *p);
 
 // parser-----------------------------------------------------------------------
 

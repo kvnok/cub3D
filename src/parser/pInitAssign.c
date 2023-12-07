@@ -27,7 +27,6 @@ void	parser_set_null(t_parser *p)
 	p->player_pos.y = -1;
 	p->readout = NULL;
 	p->raw_elements = NULL;
-	p->map_cpy = NULL;
 }
 
 void	init_dict(t_parser *p)

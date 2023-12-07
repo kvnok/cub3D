@@ -65,6 +65,8 @@ int	parser(char **argv, t_parser *p)
 		return (parser_error("set_element_values() fail\n"));
 	if (get_player_from_map(p))
 		return (parser_error("get_player_from_map() fail\n"));
+	if (map_error_check(p))
+		return (parser_error("map_error_check() fail\n"));
 	return (0);
 }
 
