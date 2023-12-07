@@ -64,6 +64,20 @@ t_program	*data_init(void)
 }
 
 /**
+ * @brief Frees the parser variables.
+ * @param p The parser struct.
+ */
+void	free_parser_vars(t_parser *p)
+{
+	if (p->raw_elements != NULL)
+		free_arr(p->raw_elements);
+	if (p->map != NULL)
+		free_arr(p->map);
+	if (p->readout != NULL)
+		free_arr(p->readout);
+}
+
+/**
  * @brief Cleans up the program data struct and exits the program.
  * @param data The program data struct.
  * @param exit_code The exit code.

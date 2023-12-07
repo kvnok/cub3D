@@ -149,6 +149,7 @@ typedef struct s_program
 
 t_program	*data_init(void);
 void		cleanup(t_program *data, int exitCode);
+void		free_parser_vars(t_parser *p);
 
 /* casting--------------------------------------------------------------------*/
 

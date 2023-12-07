@@ -12,16 +12,6 @@
 
 #include "cub3D.h"
 
-void	free_parser_vars(t_parser *p)
-{
-	if (p->raw_elements != NULL)
-		free_arr(p->raw_elements);
-	if (p->map != NULL)
-		free_arr(p->map);
-	if (p->readout != NULL)
-		free_arr(p->readout);
-}
-
 int	main(int argc, char **argv)
 {
 	t_program	*data;
