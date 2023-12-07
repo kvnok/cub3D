@@ -55,7 +55,7 @@ int	element_match_found(t_parser *p, int j, int i, bool *flag)
 	// printf("%s\n", p->path_south_texture);
 	// printf("%s\n", p->path_east_texture);
 	// printf("%s\n", p->path_west_texture);
-static void set_paths_from_dict(t_parser *p)
+static void	set_paths_from_dict(t_parser *p)
 {
 	p->path_north_texture = p->dict[N_INDEX].value;
 	p->path_south_texture = p->dict[S_INDEX].value;
