@@ -23,7 +23,7 @@
 # define MAP_WIDTH 24
 # define MAP_HEIGHT 24
 
-# define MOVESPEED 0.15
+# define MOVESPEED 0.12
 # define ROTSPEED 0.08
 
 # define COL_WALLX 0xFF0000FF

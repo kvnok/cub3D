@@ -111,7 +111,10 @@ void	draw_info_calc(t_dda *dda)
 		perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
 	else
 		perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
-	dda->draw_info.line_height = (int)((1 / perp_wall_dist) * SCR_HEIGHT);
+	if (perp_wall_dist < 1.0)
+		dda->draw_info.line_height = SCR_HEIGHT;
+	else
+		dda->draw_info.line_height = (int)((1 / perp_wall_dist) * SCR_HEIGHT);
 	dda->draw_info.draw_start = \
 						(SCR_HEIGHT / 2) - (dda->draw_info.line_height / 2);
 	if (dda->draw_info.draw_start < 0)

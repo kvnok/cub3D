@@ -33,6 +33,7 @@ void	pre_dda_values_init(t_dda *dda, t_parser input)
 			dda->player_dir.y = values[i][1];
 			dda->plane_x = values[i][2];
 			dda->plane_y = values[i][3];
+			break ;
 		}
 		i++;
 	}
@@ -53,6 +54,8 @@ void	pre_dda_constants_init(t_dda *dda, t_parser input)
 	dda->input.floor_color = input.floor_color;
 	dda->input.ceiling_color = input.ceiling_color;
 	dda->input.map = input.map;
+	dda->player_pos.x = input.player_pos.x + 0.5;
+	dda->player_pos.y = input.player_pos.y + 0.5;
 }
 
 /**
