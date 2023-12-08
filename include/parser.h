@@ -84,7 +84,6 @@ typedef struct s_parser
 void					free_arr(char **string_arr);
 void					print_arr(char **string_arr);
 int						parser_error(char *error_text);
-char					**calloc_string_arr(int amount);
 int						get_length_arr(char **string_arr);
 void					print_dict(t_parser *p);
 bool					is_tab_inside(char *s);

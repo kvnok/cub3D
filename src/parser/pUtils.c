@@ -44,23 +44,6 @@ int	parser_error(char *error_text)
 	return (1);
 }
 
-char	**calloc_string_arr(int amount)
-{
-	char	**string_arr;
-	int		i;
-
-	string_arr = malloc(sizeof(char *) * amount);
-	if (string_arr == NULL)
-		return (NULL);
-	i = 0;
-	while (i < amount)
-	{
-		string_arr[i] = NULL;
-		i++;
-	}
-	return (string_arr);
-}
-
 int	get_length_arr(char **string_arr)
 {
 	int	i;

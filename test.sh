@@ -1,6 +1,7 @@
 #!/bin/bash
 
-./cub3D ./maps/correct.cub
+# ./cub3D ./maps/correct.cub
+./cub3D ./maps/correct2.cub
 
 # ./cub3D ./maps/2.cub
 # ./cub3D ./maps/4.cub
