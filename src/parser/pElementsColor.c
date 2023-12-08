@@ -22,16 +22,13 @@ int	extract_color(char *line, int32_t *val)
 	if (colors == NULL)
 		return (parser_error("ft_split() fail\n"));
 	if (get_length_arr(colors) != 3)
-		return (parser_error("incorrect amount values\n"));
+		return (p_free_arr_print(&colors, "incorrect amount values\n"));
 	i = 0;
 	while (i < 3)
 	{
 		values[i] = ft_atoi(colors[i]);
 		if (values[i] > 255)
-		{
-			free_arr(colors);
-			return (parser_error("color value too big\n"));
-		}
+			return (p_free_arr_print(&colors, "color value too high\n"));
 		i++;
 	}
 	*val = pixel_select(values[0], values[1], values[2], 255);

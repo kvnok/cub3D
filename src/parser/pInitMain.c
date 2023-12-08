@@ -12,12 +12,6 @@
 
 #include "cub3D.h"
 
-int	p_init_error_out(char *str, char *message)
-{
-	free(str);
-	return (parser_error(message));
-}
-
 int	parser_init(char **argv, t_parser *p)
 {
 	char	*str;
@@ -31,11 +25,11 @@ int	parser_init(char **argv, t_parser *p)
 	if (str == NULL)
 		return (parser_error("str ft_calloc() fail\n"));
 	if (extract_text_from_file(&str, p))
-		return (p_init_error_out(str, "extract_text_from_file() fail\n"));
+		return (p_free_err_print(str, "extract_text_from_file() fail\n"));
 	if (is_tab_inside(str) == true)
-		return (p_init_error_out(str, "tab found, not allowed!\n"));
+		return (p_free_err_print(str, "tab found, not allowed!\n"));
 	if (check_element_count_and_newlines(str))
-		return (p_init_error_out(str, "count_elements fail\n"));
+		return (p_free_err_print(str, "count_elements fail\n"));
 	p->readout = ft_split(str, '\n');
 	free(str);
 	if (p->readout == NULL)
