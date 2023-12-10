@@ -46,17 +46,17 @@ static int	set_texture_struct(t_dda *dda)
 	dda->t.e = NULL;
 	dda->t.n = mlx_load_png(dda->p->path_north_texture);
 	if (!dda->t.n)
-		return 1;
+		return (1);
 	dda->t.s = mlx_load_png(dda->p->path_south_texture);
 	if (!dda->t.s)
-		return 1;
+		return (1);
 	dda->t.w = mlx_load_png(dda->p->path_west_texture);
 	if (!dda->t.w)
-		return 1;
+		return (1);
 	dda->t.e = mlx_load_png(dda->p->path_east_texture);
 	if (!dda->t.e)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
 /**

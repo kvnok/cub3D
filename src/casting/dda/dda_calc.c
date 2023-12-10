@@ -111,12 +111,10 @@ void	draw_info_calc(t_dda *dda)
 		dda->draw_info.line_h = SCR_HEIGHT;
 	else
 		dda->draw_info.line_h = (int)((1 / dda->perp_wall_dist) * SCR_HEIGHT);
-	dda->draw_info.draw_start = \
-						(SCR_HEIGHT / 2) - (dda->draw_info.line_h / 2);
+	dda->draw_info.draw_start = (SCR_HEIGHT / 2) - (dda->draw_info.line_h / 2);
 	if (dda->draw_info.draw_start < 0)
 		dda->draw_info.draw_start = 0;
-	dda->draw_info.draw_end = \
-						(SCR_HEIGHT / 2) + (dda->draw_info.line_h / 2);
+	dda->draw_info.draw_end = (SCR_HEIGHT / 2) + (dda->draw_info.line_h / 2);
 	if (dda->draw_info.draw_end >= SCR_HEIGHT)
 		dda->draw_info.draw_end = SCR_HEIGHT - 1;
 }
