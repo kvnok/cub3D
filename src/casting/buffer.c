@@ -54,13 +54,13 @@ static void	fill_floor_ceiling(uint32_t **buff, t_dda *dda, int x)
 	y = 0;
 	while (y < dda->draw_info.draw_start && y < SCR_HEIGHT)
 	{
-		buff[y][x] = dda->input.ceiling_color;
+		buff[y][x] = dda->p->ceiling_color;
 		y++;
 	}
 	y = dda->draw_info.draw_end + 1;
 	while (y < SCR_HEIGHT)
 	{
-		buff[y][x] = dda->input.floor_color;
+		buff[y][x] = dda->p->floor_color;
 		y++;
 	}
 }

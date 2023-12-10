@@ -87,6 +87,7 @@ void	cleanup(t_program *data, int exit_code)
 	int	y;
 
 	y = 0;
+	free_parser_vars(data->dda->p);
 	while (data->img_buffer && y < SCR_HEIGHT)
 	{
 		free(data->img_buffer[y]);

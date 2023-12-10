@@ -13,29 +13,6 @@
 #include "cub3D.h"
 
 /**
- * @brief Deletes and initializes a new instance of an image.
- * @param data The program data struct.
- */
-void	reset_img(t_program *data)
-{
-	printf("hey\n");
-	if (data->img)
-		mlx_delete_image(data->mlx, data->img);
-	printf("yo\n");
-	data->img = mlx_new_image(data->mlx, SCR_WIDTH, SCR_HEIGHT);
-	if (!data->img)
-	{
-		print_error("Error\nmlx_new_image() failure\n");
-		cleanup(data, EXIT_FAILURE);
-	}
-	if (mlx_image_to_window(data->mlx, data->img, 0, 0) == -1)
-	{
-		print_error("Error\nmmlx_image_to_window failure\n");
-		cleanup(data, EXIT_FAILURE);
-	}
-}
-
-/**
  * @brief Loops over all the coordinates putting the correct pixel in the 
  * correct coordinate from the buffer
  * @param img_buffer The buffer containing the 2D uint32_t array

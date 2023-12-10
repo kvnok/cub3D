@@ -13,6 +13,7 @@
 #ifndef DDA_H
 # define DDA_H
 
+# include "parser.h"
 # include <stdlib.h>
 # include <math.h>
 # include <stdbool.h>
@@ -32,6 +33,8 @@
 // # define COL_WALLY 0xE48F45AA
 # define COL_WALLX 0x64CCC5FF
 # define COL_WALLY 0x64CCC5AA
+
+typedef struct s_parser	t_parser;
 
 typedef struct s_vector
 {
@@ -58,19 +61,6 @@ typedef struct s_draw_info
 	int		draw_end;
 }	t_draw_info;
 
-typedef struct	s_input_constants
-{
-	char				*path_north_texture;
-	char				*path_south_texture;
-	char				*path_east_texture;
-	char				*path_west_texture;
-
-	int32_t				floor_color;
-	int32_t				ceiling_color;
-
-	char				**map;
-}	t_input_constants;
-
 typedef struct s_dda
 {
 	double				plane_x;
@@ -78,7 +68,7 @@ typedef struct s_dda
 	t_coors_double		player_pos;
 	t_vector			player_dir;
 
-	t_input_constants	input;
+	t_parser			*p;
 
 	double				camera_x;
 	t_vector			ray_dir;
@@ -98,5 +88,6 @@ typedef struct s_dda
 void	dda_per_x(t_dda *dda, int x);
 void	draw_info_calc(t_dda *dda);
 void	dda_loop(void *param);
+void	textures(t_dda *dda);
 
 #endif

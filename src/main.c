@@ -27,12 +27,11 @@ int	main(int argc, char **argv)
 	data = data_init();
 	if (!data)
 		return (EXIT_FAILURE);
-	data->dda = dda_init(p);
+	data->dda = dda_init(&p);
 	if (!data->dda)
 		cleanup(data, EXIT_FAILURE);
 	mlx_loop_hook(data->mlx, &dda_loop, (void *)data);
 	mlx_loop(data->mlx);
 	printf("test yep\n");
-	free_parser_vars(&p);
 	cleanup(data, EXIT_SUCCESS);
 }

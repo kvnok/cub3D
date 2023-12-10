@@ -21,12 +21,11 @@
 # include "MLX42.h"
 # include "MLX42_Int.h"
 # include "libft.h"
-# include "dda.h"
 # include "parser.h"
+# include "dda.h"
 
 # define SCR_WIDTH 1560
 # define SCR_HEIGHT SCR_WIDTH * 3 / 4
-
 
 typedef struct s_program
 {
@@ -44,7 +43,7 @@ void		free_parser_vars(t_parser *p);
 
 /* casting--------------------------------------------------------------------*/
 
-t_dda		*dda_init(t_parser input);
+t_dda		*dda_init(t_parser *p);
 void		img_buffer_init(t_program *data);
 void		fill_buffer(uint32_t **buffer, t_dda *dda, int x);
 void		key_input(t_program *data);

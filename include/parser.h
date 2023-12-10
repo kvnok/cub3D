@@ -13,6 +13,7 @@
 #ifndef PARSER_H
 # define PARSER_H
 
+# include "dda.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <limits.h>
@@ -40,10 +41,10 @@
 
 typedef struct s_parser	t_parser;
 
+typedef struct s_vector t_vector;
+
 typedef int				(*t_func)(t_parser *, int, char *);
 
-// dictionary
-// mostly used for elements
 typedef struct s_dict
 {
 	char				*key;
@@ -52,15 +53,6 @@ typedef struct s_dict
 	t_func				func;
 }						t_dict;
 
-/*
-filename.cub
-paths to textures
-floor color
-ceiling color
-map without player (N, W, S, E) in it
-original player x and y
-player starting direction
-*/
 typedef struct s_parser
 {
 	char				*filename;

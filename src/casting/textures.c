@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   tetxtures.c                                        :+:    :+:            */
+/*   textures.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ovan-rhe <ovan-rhe@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -12,7 +12,8 @@
 
 #include "cub3D.h"
 
-void	textures(void)
+void	textures(t_dda *dda)
 {
 	printf("hey\n");
+	(void) dda;
 }

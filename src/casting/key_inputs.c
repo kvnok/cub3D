@@ -26,7 +26,7 @@
  */
 static bool	hitting_wall(t_dda *dda, int x, int y)
 {
-	if (dda->input.map[y][x] != '0')
+	if (dda->p->map[y][x] != '0')
 		return (true);
 	return (false);
 }

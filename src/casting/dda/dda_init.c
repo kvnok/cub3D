@@ -15,9 +15,8 @@
 /**
  * Initializes the pre dda struct containing the "constant" values of dda.
  * @param dda The dda data struct.
- * @param input The parser struct.
  */
-void	pre_dda_values_init(t_dda *dda, t_parser input)
+void	pre_dda_values_init(t_dda *dda)
 {
 	int				i;
 	const char		dirs[4] = "NESW";
@@ -27,7 +26,7 @@ void	pre_dda_values_init(t_dda *dda, t_parser input)
 	i = 0;
 	while (i < 4)
 	{
-		if (dirs[i] == input.starting_dir)
+		if (dirs[i] == dda->p->starting_dir)
 		{
 			dda->player_dir.x = values[i][0];
 			dda->player_dir.y = values[i][1];
@@ -39,31 +38,13 @@ void	pre_dda_values_init(t_dda *dda, t_parser input)
 	}
 }
 
-/**
- * @brief Assigns the values that don't change during the dda process to the
- * dda struct.
- * @param dda The dda data struct;
- * @param input The parser struct.
- */
-void	pre_dda_constants_init(t_dda *dda, t_parser input)
-{
-	dda->input.path_north_texture = input.path_north_texture;
-	dda->input.path_east_texture = input.path_east_texture;
-	dda->input.path_south_texture = input.path_south_texture;
-	dda->input.path_west_texture = input.path_west_texture;
-	dda->input.floor_color = input.floor_color;
-	dda->input.ceiling_color = input.ceiling_color;
-	dda->input.map = input.map;
-	dda->player_pos.x = input.player_pos.x + 0.5;
-	dda->player_pos.y = input.player_pos.y + 0.5;
-}
 
 /**
  * @brief Initilizes the dda struct and fills them with the "constant" values.
- * @param input The parser struct.
+ * @param p The parser struct.
  * @return The initialized dda struct or NULL on error.
  */
-t_dda	*dda_init(t_parser input)
+t_dda	*dda_init(t_parser *p)
 {
 	t_dda	*dda;
 
@@ -73,7 +54,10 @@ t_dda	*dda_init(t_parser input)
 		print_error("Error\nmalloc() failure\n");
 		return (NULL);
 	}
-	pre_dda_values_init(dda, input);
-	pre_dda_constants_init(dda, input);
+	dda->p = NULL;
+	dda->p = p;
+	dda->player_pos.x = dda->p->player_pos.x + 0.5;
+	dda->player_pos.y = dda->p->player_pos.y + 0.5; 
+	pre_dda_values_init(dda);
 	return (dda);
 }
