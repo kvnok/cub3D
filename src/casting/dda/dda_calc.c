@@ -81,10 +81,8 @@ static void	loop_till_collision(t_dda *dda)
 void	dda_per_x(t_dda *dda, int x)
 {
 	dda->camera_x = 2 * (x / (double)SCR_WIDTH) - 1;
-	dda->ray_dir.x = dda->player_dir.x + \
-											(dda->plane_x * dda->camera_x);
-	dda->ray_dir.y = dda->player_dir.y + \
-											(dda->plane_y * dda->camera_x);
+	dda->ray_dir.x = dda->player_dir.x + (dda->plane_x * dda->camera_x);
+	dda->ray_dir.y = dda->player_dir.y + (dda->plane_y * dda->camera_x);
 	dda->map_pos.x = (int)dda->player_pos.x;
 	dda->map_pos.y = (int)dda->player_pos.y;
 	if (dda->ray_dir.x == 0)
