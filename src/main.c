@@ -26,7 +26,10 @@ int	main(int argc, char **argv)
 	}
 	data = data_init();
 	if (!data)
-		return (EXIT_FAILURE);
+	{
+		free_parser_vars(&p);
+		return (parser_error("data_init() fail\n"));
+	}
 	data->dda = dda_init(&p);
 	if (!data->dda)
 		cleanup(data, EXIT_FAILURE);

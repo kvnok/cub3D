@@ -77,6 +77,18 @@ void	free_parser_vars(t_parser *p)
 		free_arr(p->readout);
 }
 
+static void	free_textures(t_dda *dda)
+{
+	if (dda->t.n != NULL)
+		mlx_delete_texture(dda->t.n);
+	if (dda->t.s != NULL)
+		mlx_delete_texture(dda->t.s);
+	if (dda->t.w != NULL)
+		mlx_delete_texture(dda->t.w);
+	if (dda->t.e != NULL)
+		mlx_delete_texture(dda->t.e);
+}
+
 /**
  * @brief Cleans up the program data struct and exits the program.
  * @param data The program data struct.
@@ -88,6 +100,7 @@ void	cleanup(t_program *data, int exit_code)
 
 	y = 0;
 	free_parser_vars(data->dda->p);
+	free_textures(data->dda);
 	while (data->img_buffer && y < SCR_HEIGHT)
 	{
 		free(data->img_buffer[y]);

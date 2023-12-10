@@ -61,6 +61,14 @@ typedef struct s_draw_info
 	int		draw_end;
 }	t_draw_info;
 
+typedef struct s_textures
+{
+	mlx_texture_t *n;
+	mlx_texture_t *s;
+	mlx_texture_t *w;
+	mlx_texture_t *e;
+}	t_textures;
+
 typedef struct s_dda
 {
 	double				plane_x;
@@ -69,6 +77,7 @@ typedef struct s_dda
 	t_vector			player_dir;
 
 	t_parser			*p;
+	t_textures			t;
 
 	double				camera_x;
 	t_vector			ray_dir;

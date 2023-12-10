@@ -38,6 +38,27 @@ void	pre_dda_values_init(t_dda *dda)
 	}
 }
 
+static int	set_texture_struct(t_dda *dda)
+{
+	dda->t.n = NULL;
+	dda->t.s = NULL;
+	dda->t.w = NULL;
+	dda->t.e = NULL;
+	dda->t.n = mlx_load_png(dda->p->path_north_texture);
+	if (!dda->t.n)
+		return 1;
+	dda->t.s = mlx_load_png(dda->p->path_south_texture);
+	if (!dda->t.s)
+		return 1;
+	dda->t.w = mlx_load_png(dda->p->path_west_texture);
+	if (!dda->t.w)
+		return 1;
+	dda->t.e = mlx_load_png(dda->p->path_east_texture);
+	if (!dda->t.e)
+		return 1;
+	return 0;
+}
+
 /**
  * @brief Initilizes the dda struct and fills them with the "constant" values.
  * @param p The parser struct.
@@ -58,5 +79,10 @@ t_dda	*dda_init(t_parser *p)
 	dda->player_pos.x = dda->p->player_pos.x + 0.5;
 	dda->player_pos.y = dda->p->player_pos.y + 0.5;
 	pre_dda_values_init(dda);
+	if (set_texture_struct(dda))
+	{
+		print_error("Error\ntexture fail\n");
+		return (NULL);
+	}
 	return (dda);
 }
