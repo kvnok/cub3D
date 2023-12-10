@@ -24,8 +24,8 @@
 # include "parser.h"
 # include "dda.h"
 
-# define SCR_WIDTH 1560
-# define SCR_HEIGHT SCR_WIDTH * 3 / 4
+# define SCR_WIDTH 1600
+# define SCR_HEIGHT 1200
 
 typedef struct s_program
 {

@@ -38,7 +38,6 @@ void	pre_dda_values_init(t_dda *dda)
 	}
 }
 
-
 /**
  * @brief Initilizes the dda struct and fills them with the "constant" values.
  * @param p The parser struct.
@@ -57,7 +56,7 @@ t_dda	*dda_init(t_parser *p)
 	dda->p = NULL;
 	dda->p = p;
 	dda->player_pos.x = dda->p->player_pos.x + 0.5;
-	dda->player_pos.y = dda->p->player_pos.y + 0.5; 
+	dda->player_pos.y = dda->p->player_pos.y + 0.5;
 	pre_dda_values_init(dda);
 	return (dda);
 }

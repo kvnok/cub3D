@@ -28,10 +28,10 @@
 # define ROTSPEED 0.08
 
 // # define COL_WALLX 0xFF0000FF
-// # define COL_WALLY 0xFF0000AA
 // # define COL_WALLX 0xE48F45FF
-// # define COL_WALLY 0xE48F45AA
 # define COL_WALLX 0x64CCC5FF
+// # define COL_WALLY 0xFF0000AA
+// # define COL_WALLY 0xE48F45AA
 # define COL_WALLY 0x64CCC5AA
 
 typedef struct s_parser	t_parser;

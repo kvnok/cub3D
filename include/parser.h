@@ -41,7 +41,7 @@
 
 typedef struct s_parser	t_parser;
 
-typedef struct s_vector t_vector;
+typedef struct s_vector	t_vector;
 
 typedef int				(*t_func)(t_parser *, int, char *);
 

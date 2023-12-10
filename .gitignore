@@ -9,3 +9,6 @@ cub3D
 
 # Debug files
 .vscode
+
+# map tester
+test_maps
