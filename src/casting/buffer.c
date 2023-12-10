@@ -88,7 +88,6 @@ static void	fill_wall(uint32_t **buffer, t_dda *dda, int x)
 
 /**
  * @brief Wrapper function to fill the buffer with the right uint32_t values.
- * @param input The input values (containing the floor and ceiling colours).
  * @param buffer The uint32_t 2D array.
  * @param dda The dda data struct.
  * @param x The current x on the screen to calculate.

@@ -56,7 +56,7 @@ typedef struct s_coors_int
 
 typedef struct s_draw_info
 {
-	int		line_height;
+	int		line_h;
 	int		draw_start;
 	int		draw_end;
 }	t_draw_info;
@@ -80,6 +80,7 @@ typedef struct s_dda
 	double				side_dist_x;
 	double				side_dist_y;
 	int					current_side;
+	double				perp_wall_dist;
 	t_draw_info			draw_info;
 }	t_dda;
 
