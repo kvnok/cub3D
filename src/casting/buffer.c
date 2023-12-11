@@ -71,20 +71,20 @@ static void	fill_floor_ceiling(uint32_t **buff, t_dda *dda, int x)
  * @param dda The dda data struct.
  * @param x The current x on the screen to calculate.
  */
-// static void	fill_wall(uint32_t **buffer, t_dda *dda, int x)
-// {
-// 	int	y;
+static void	fill_wall(uint32_t **buffer, t_dda *dda, int x)
+{
+	int	y;
 
-// 	y = dda->line.start;
-// 	while (y <= dda->line.end)
-// 	{
-// 		if (dda->current_side == X_SIDE)
-// 			buffer[y][x] = COL_WALLX;
-// 		else
-// 			buffer[y][x] = COL_WALLY;
-// 		y++;
-// 	}
-// }
+	y = dda->line.start;
+	while (y <= dda->line.end)
+	{
+		if (dda->current_side == X_SIDE)
+			buffer[y][x] = COL_WALLX;
+		else
+			buffer[y][x] = COL_WALLY;
+		y++;
+	}
+}
 
 /**
  * @brief Wrapper function to fill the buffer with the right uint32_t values.
@@ -95,6 +95,6 @@ static void	fill_floor_ceiling(uint32_t **buff, t_dda *dda, int x)
 void	fill_buffer(uint32_t **buffer, t_dda *dda, int x)
 {
 	fill_floor_ceiling(buffer, dda, x);
-	// fill_wall(buffer, dda, x);
-	textures(buffer, dda, x);
+	fill_wall(buffer, dda, x);
+	// textures(buffer, dda, x);
 }
