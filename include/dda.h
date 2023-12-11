@@ -27,10 +27,10 @@
 # define COL_WALLX 0x64CCC5FF
 # define COL_WALLY 0x64CCC5AA
 
-#define FORWARD 1
-#define BACK -1
-#define LEFT -1
-#define RIGHT 1
+# define FORWARD 1
+# define BACK -1
+# define LEFT -1
+# define RIGHT 1
 
 typedef struct s_parser	t_parser;
 
