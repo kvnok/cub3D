@@ -79,14 +79,14 @@ void	free_parser_vars(t_parser *p)
 
 static void	free_textures(t_dda *dda)
 {
-	if (dda->t.n != NULL)
-		mlx_delete_texture(dda->t.n);
-	if (dda->t.s != NULL)
-		mlx_delete_texture(dda->t.s);
-	if (dda->t.w != NULL)
-		mlx_delete_texture(dda->t.w);
-	if (dda->t.e != NULL)
-		mlx_delete_texture(dda->t.e);
+	if (dda->t[N_INDEX] != NULL)
+		mlx_delete_texture(dda->t[N_INDEX]);
+	if (dda->t[S_INDEX] != NULL)
+		mlx_delete_texture(dda->t[S_INDEX]);
+	if (dda->t[W_INDEX] != NULL)
+		mlx_delete_texture(dda->t[W_INDEX]);
+	if (dda->t[E_INDEX] != NULL)
+		mlx_delete_texture(dda->t[E_INDEX]);
 }
 
 /**

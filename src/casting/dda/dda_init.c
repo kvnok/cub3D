@@ -40,21 +40,21 @@ void	pre_dda_values_init(t_dda *dda)
 
 static int	set_texture_struct(t_dda *dda)
 {
-	dda->t.n = NULL;
-	dda->t.s = NULL;
-	dda->t.w = NULL;
-	dda->t.e = NULL;
-	dda->t.n = mlx_load_png(dda->p->path_north_texture);
-	if (!dda->t.n)
+	dda->t[N_INDEX] = NULL;
+	dda->t[S_INDEX] = NULL;
+	dda->t[W_INDEX] = NULL;
+	dda->t[E_INDEX] = NULL;
+	dda->t[N_INDEX] = mlx_load_png(dda->p->path_north_texture);
+	if (!dda->t[N_INDEX])
 		return (1);
-	dda->t.s = mlx_load_png(dda->p->path_south_texture);
-	if (!dda->t.s)
+	dda->t[S_INDEX] = mlx_load_png(dda->p->path_south_texture);
+	if (!dda->t[S_INDEX])
 		return (1);
-	dda->t.w = mlx_load_png(dda->p->path_west_texture);
-	if (!dda->t.w)
+	dda->t[W_INDEX] = mlx_load_png(dda->p->path_west_texture);
+	if (!dda->t[W_INDEX])
 		return (1);
-	dda->t.e = mlx_load_png(dda->p->path_east_texture);
-	if (!dda->t.e)
+	dda->t[E_INDEX] = mlx_load_png(dda->p->path_east_texture);
+	if (!dda->t[E_INDEX])
 		return (1);
 	return (0);
 }

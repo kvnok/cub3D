@@ -56,18 +56,10 @@ typedef struct s_coors_int
 
 typedef struct s_draw_info
 {
-	int		line_h;
-	int		draw_start;
-	int		draw_end;
+	int		h;
+	int		start;
+	int		end;
 }	t_draw_info;
-
-typedef struct s_textures
-{
-	mlx_texture_t *n;
-	mlx_texture_t *s;
-	mlx_texture_t *w;
-	mlx_texture_t *e;
-}	t_textures;
 
 typedef struct s_dda
 {
@@ -77,7 +69,7 @@ typedef struct s_dda
 	t_vector			player_dir;
 
 	t_parser			*p;
-	t_textures			t;
+	mlx_texture_t		*t[4];
 
 	double				camera_x;
 	t_vector			ray_dir;
@@ -90,7 +82,7 @@ typedef struct s_dda
 	double				side_dist_y;
 	int					current_side;
 	double				perp_wall_dist;
-	t_draw_info			draw_info;
+	t_draw_info			line;
 }	t_dda;
 
 /* functions ---------------------------------------------------------------- */
@@ -98,6 +90,6 @@ typedef struct s_dda
 void	dda_per_x(t_dda *dda, int x);
 void	draw_info_calc(t_dda *dda);
 void	dda_loop(void *param);
-void	textures(t_dda *dda);
+void	textures(uint32_t **buffer, t_dda *dda, int x);
 
 #endif
