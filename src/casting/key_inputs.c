@@ -12,11 +12,6 @@
 
 #include "cub3D.h"
 
-#define FORWARD 1
-#define BACK -1
-#define LEFT -1
-#define RIGHT 1
-
 /**
  * @brief Checks if the player is hitting a wall.
  * @param x The x coordinate of the player.

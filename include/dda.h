@@ -21,18 +21,16 @@
 # define X_SIDE 1
 # define Y_SIDE 2
 
-# define MAP_WIDTH 24
-# define MAP_HEIGHT 24
-
 # define MOVESPEED 0.12
 # define ROTSPEED 0.08
 
-// # define COL_WALLX 0xFF0000FF
-// # define COL_WALLX 0xE48F45FF
 # define COL_WALLX 0x64CCC5FF
-// # define COL_WALLY 0xFF0000AA
-// # define COL_WALLY 0xE48F45AA
 # define COL_WALLY 0x64CCC5AA
+
+#define FORWARD 1
+#define BACK -1
+#define LEFT -1
+#define RIGHT 1
 
 typedef struct s_parser	t_parser;
 
