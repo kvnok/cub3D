@@ -33,15 +33,17 @@ static bool	hitting_wall(t_dda *dda, int x, int y)
  */
 static void	move_forwards_backwards(t_dda *dda, int dir)
 {
-	t_coors_double	new_pos;
+	double	current_pos_x;
+	double	dx;
+	double	dy;
 
-	new_pos.x = dda->player_pos.x + (dda->player_dir.x * MOVESPEED * dir);
-	new_pos.y = dda->player_pos.y + (dda->player_dir.y * MOVESPEED * dir);
-	if (!hitting_wall(dda, new_pos.x, new_pos.y))
-	{
-		dda->player_pos.x = new_pos.x;
-		dda->player_pos.y = new_pos.y;
-	}
+	current_pos_x = dda->player_pos.x;
+	dx = dda->player_dir.x * MOVESPEED * dir;
+	dy = dda->player_dir.y * MOVESPEED * dir;
+	if (!hitting_wall(dda, dda->player_pos.x + dx, dda->player_pos.y))
+		dda->player_pos.x += dx;
+	if (!hitting_wall(dda, current_pos_x, dda->player_pos.y + dy))
+		dda->player_pos.y += dy;
 }
 
 /**
@@ -51,15 +53,17 @@ static void	move_forwards_backwards(t_dda *dda, int dir)
  */
 static void	move_left_right(t_dda *dda, int dir)
 {
-	t_coors_double	new_pos;
+	double	current_pos_x;
+	double	dx;
+	double	dy;
 
-	new_pos.x = dda->player_pos.x - (dda->player_dir.y * MOVESPEED * dir);
-	new_pos.y = dda->player_pos.y + (dda->player_dir.x * MOVESPEED * dir);
-	if (!hitting_wall(dda, new_pos.x, new_pos.y))
-	{
-		dda->player_pos.x = new_pos.x;
-		dda->player_pos.y = new_pos.y;
-	}
+	current_pos_x = dda->player_pos.x;
+	dx = -(dda->player_dir.y * MOVESPEED * dir);
+	dy = dda->player_dir.x * MOVESPEED * dir;
+	if (!hitting_wall(dda, dda->player_pos.x + dx, dda->player_pos.y))
+		dda->player_pos.x += dx;
+	if (!hitting_wall(dda, current_pos_x, dda->player_pos.y + dy))
+		dda->player_pos.y += dy;
 }
 
 /**
