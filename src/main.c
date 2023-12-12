@@ -35,6 +35,5 @@ int	main(int argc, char **argv)
 		cleanup(data, EXIT_FAILURE);
 	mlx_loop_hook(data->mlx, &dda_loop, (void *)data);
 	mlx_loop(data->mlx);
-	printf("test yep\n");
 	cleanup(data, EXIT_SUCCESS);
 }
