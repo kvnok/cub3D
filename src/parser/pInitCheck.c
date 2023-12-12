@@ -50,15 +50,15 @@ int	check_element_count_and_newlines(char *s)
 	element_count = 0;
 	i = loop_through_elements(s, &element_count);
 	if (element_count != 6)
-		return (parser_error("Does not have 6 elements\n"));
+		return (print_error("Does not have 6 elements\n"));
 	while (s[i] && s[i] == '\n')
 		i++;
 	while (s[i])
 	{
 		if (s[i - 1] == '\n' && s[i] == '\n')
-			return (parser_error("map contains extra newline\n"));
+			return (print_error("map contains extra newline\n"));
 		if (s[i] == '\n' && !(s[i - 1] == '1' || s[i - 1] == '0'))
-			return (parser_error("invalid map line\n"));
+			return (print_error("invalid map line\n"));
 		i++;
 	}
 	return (0);

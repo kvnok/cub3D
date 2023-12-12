@@ -15,15 +15,15 @@
 int	parser(char **argv, t_parser *p)
 {
 	if (parser_init(argv, p))
-		return (parser_error("parser_init() fail\n"));
+		return (print_error("parser_init() fail\n"));
 	if (get_raw_elements_and_map(p))
-		return (parser_error("get_raw_elements_and_map() fail\n"));
+		return (print_error("get_raw_elements_and_map() fail\n"));
 	if (set_element_values(p))
-		return (parser_error("set_element_values() fail\n"));
+		return (print_error("set_element_values() fail\n"));
 	if (get_player_from_map(p))
-		return (parser_error("get_player_from_map() fail\n"));
+		return (print_error("get_player_from_map() fail\n"));
 	if (map_error_check(p))
-		return (parser_error("map_error_check() fail\n"));
+		return (print_error("map_error_check() fail\n"));
 	return (0);
 }
 

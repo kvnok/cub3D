@@ -71,7 +71,7 @@ t_dda	*dda_init(t_parser *p)
 	dda = (t_dda *)malloc(sizeof(t_dda));
 	if (!dda)
 	{
-		print_error("Error\nmalloc() failure\n");
+		print_error("malloc() failure\n");
 		return (NULL);
 	}
 	dda->p = NULL;
@@ -81,7 +81,7 @@ t_dda	*dda_init(t_parser *p)
 	pre_dda_values_init(dda);
 	if (set_texture_struct(dda))
 	{
-		print_error("Error\ntexture fail\n");
+		print_error("texture fail\n");
 		return (NULL);
 	}
 	return (dda);

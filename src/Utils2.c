@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pUtils2.c                                          :+:    :+:            */
+/*   Utils2.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kkroon <kkroon@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
@@ -45,11 +45,11 @@ void	print_extracted_rgba(int32_t val, char *s)
 int	p_free_err_print(char *str, char *message)
 {
 	free(str);
-	return (parser_error(message));
+	return (print_error(message));
 }
 
 int	p_free_arr_print(char ***arr, char *message)
 {
 	free_arr(*arr);
-	return (parser_error(message));
+	return (print_error(message));
 }

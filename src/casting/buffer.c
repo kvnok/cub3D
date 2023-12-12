@@ -23,7 +23,7 @@ void	img_buffer_init(t_program *data)
 	data->img_buffer = (uint32_t **)malloc(sizeof(uint32_t *) * SCR_HEIGHT);
 	if (!data->img_buffer)
 	{
-		print_error("Error\nmalloc() failure\n");
+		print_error("malloc() failure\n");
 		cleanup(data, EXIT_FAILURE);
 	}
 	y = 0;
@@ -32,7 +32,7 @@ void	img_buffer_init(t_program *data)
 		data->img_buffer[y] = (uint32_t *)malloc(sizeof(uint32_t) * SCR_WIDTH);
 		if (!data->img_buffer[y])
 		{
-			print_error("Error\nmalloc() failure\n");
+			print_error("malloc() failure\n");
 			cleanup(data, EXIT_FAILURE);
 		}
 		y++;

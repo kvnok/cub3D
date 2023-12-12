@@ -18,17 +18,17 @@ int	main(int argc, char **argv)
 	t_parser	p;
 
 	if (argc != 2)
-		return (parser_error("argc != 2\n"));
+		return (print_error("argc != 2\n"));
 	if (parser(argv, &p))
 	{
 		free_parser_vars(&p);
-		return (parser_error("parser() fail\n"));
+		return (print_error("parser() fail\n"));
 	}
 	data = data_init();
 	if (!data)
 	{
 		free_parser_vars(&p);
-		return (parser_error("data_init() fail\n"));
+		return (print_error("data_init() fail\n"));
 	}
 	data->dda = dda_init(&p);
 	if (!data->dda)

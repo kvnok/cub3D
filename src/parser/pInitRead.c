@@ -24,7 +24,7 @@ int	fill_string_from_file(char **str, int fd)
 			if ((*str)[0] == '\0' || int_strlen(*str) == 0)
 			{
 				free(line);
-				return (parser_error("line read fail\n"));
+				return (print_error("line read fail\n"));
 			}
 			break ;
 		}
@@ -32,7 +32,7 @@ int	fill_string_from_file(char **str, int fd)
 		if (*str == NULL)
 		{
 			free(line);
-			return (parser_error("strjoin() fail\n"));
+			return (print_error("strjoin() fail\n"));
 		}
 		if (line != NULL)
 			free(line);
@@ -46,11 +46,11 @@ int	extract_text_from_file(char **str, t_parser *p)
 
 	fd = open(p->filename, O_RDONLY);
 	if (fd < 0)
-		return (parser_error("fd < 0\n"));
+		return (print_error("fd < 0\n"));
 	if (fill_string_from_file(str, fd))
 	{
 		close(fd);
-		return (parser_error("fill_string_from_file() fail\n"));
+		return (print_error("fill_string_from_file() fail\n"));
 	}
 	close(fd);
 	return (0);

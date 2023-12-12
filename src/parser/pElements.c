@@ -19,7 +19,7 @@ int	set_dict_path(t_parser *p, int dict_index, char *line)
 	p->dict[dict_index].value = line;
 	test = mlx_load_png(line);
 	if (test == NULL)
-		return (parser_error("incorrect texture path\n"));
+		return (print_error("incorrect texture path\n"));
 	mlx_delete_texture(test);
 	return (0);
 }
@@ -35,7 +35,7 @@ int	select_function(t_parser *p, int dict_index, char *line)
 		i++;
 	if (p->dict[dict_index].func(p, dict_index, line + i))
 	{
-		return (parser_error("Dict Function Pointer fail\n"));
+		return (print_error("Dict Function Pointer fail\n"));
 	}
 	return (0);
 }
@@ -43,11 +43,11 @@ int	select_function(t_parser *p, int dict_index, char *line)
 int	element_match_found(t_parser *p, int j, int i, bool *flag)
 {
 	if (p->dict[j].flag == true)
-		return (parser_error("duplicate element\n"));
+		return (print_error("duplicate element\n"));
 	p->dict[j].flag = true;
 	*flag = true;
 	if (select_function(p, j, p->raw_elements[i]))
-		return (parser_error("select_function() fail\n"));
+		return (print_error("select_function() fail\n"));
 	return (0);
 }
 
@@ -81,11 +81,11 @@ int	set_element_values(t_parser *p)
 			if (strncmp(p->dict[j].key, p->raw_elements[i],
 					ft_strlen(p->dict[j].key)) == 0)
 				if (element_match_found(p, j, i, &flag))
-					return (parser_error("incorrect element"));
+					return (print_error("incorrect element"));
 			j++;
 		}
 		if (flag == false)
-			return (parser_error("no element match found\n"));
+			return (print_error("no element match found\n"));
 		i++;
 	}
 	set_paths_from_dict(p);

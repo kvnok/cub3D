@@ -22,19 +22,19 @@ static int	init_img_and_mlx(t_program *data)
 	data->mlx = mlx_init(SCR_WIDTH, SCR_HEIGHT, "cub3d", true);
 	if (!data->mlx)
 	{
-		print_error("Error\nmlx_init() failure\n");
+		print_error("mlx_init() failure\n");
 		return (1);
 	}
 	data->img = mlx_new_image(data->mlx, SCR_WIDTH, SCR_HEIGHT);
 	if (!data->img)
 	{
-		print_error("Error\nmlx_new_image() failure\n");
+		print_error("mlx_new_image() failure\n");
 		mlx_terminate(data->mlx);
 		return (1);
 	}
 	if (mlx_image_to_window(data->mlx, data->img, 0, 0) == -1)
 	{
-		print_error("Error\nmlx_image_to_window() failure\n");
+		print_error("mlx_image_to_window() failure\n");
 		mlx_delete_image(data->mlx, data->img);
 		mlx_terminate(data->mlx);
 		return (1);
@@ -53,7 +53,7 @@ t_program	*data_init(void)
 	data = (t_program *)malloc(sizeof(data));
 	if (!data)
 	{
-		print_error("Error\nmalloc() failure\n");
+		print_error("malloc() failure\n");
 		return (NULL);
 	}
 	if (init_img_and_mlx(data))

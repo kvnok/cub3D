@@ -37,7 +37,7 @@ void	print_arr(char **string_arr)
 	}
 }
 
-int	parser_error(char *error_text)
+int	print_error(char *error_text)
 {
 	static int	run = 0;
 
@@ -47,12 +47,6 @@ int	parser_error(char *error_text)
 		printf("Error\n");
 		printf("%s", error_text);
 	}
-	return (1);
-}
-
-int	print_error(const char *errorMsg)
-{
-	printf("%s\n", errorMsg);
 	return (1);
 }
 

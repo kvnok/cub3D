@@ -47,14 +47,14 @@ int	get_player_from_map(t_parser *p)
 		while (p->map[y][x])
 		{
 			if (is_allowed_char(p->map[y][x]) == false)
-				return (parser_error("char not allowed\n"));
+				return (print_error("char not allowed\n"));
 			if (error_check_player(p, p->map[y][x], y, x) == false)
-				return (parser_error("incorrect player\n"));
+				return (print_error("incorrect player\n"));
 			x++;
 		}
 		y++;
 	}
 	if (p->player_pos.x == -1 || p->player_pos.y == -1)
-		return (parser_error("player not found in map\n"));
+		return (print_error("player not found in map\n"));
 	return (0);
 }

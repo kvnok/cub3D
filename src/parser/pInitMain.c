@@ -20,10 +20,10 @@ int	parser_init(char **argv, t_parser *p)
 	init_dict(p);
 	p->filename = argv[1];
 	if (is_file_name_correct(p->filename) == false)
-		return (parser_error("is_file_name_correct() false\n"));
+		return (print_error("is_file_name_correct() false\n"));
 	str = ft_calloc(sizeof(char *) + 1, 1);
 	if (str == NULL)
-		return (parser_error("str ft_calloc() fail\n"));
+		return (print_error("str ft_calloc() fail\n"));
 	if (extract_text_from_file(&str, p))
 		return (p_free_err_print(str, "extract_text_from_file() fail\n"));
 	if (is_tab_inside(str) == true)
@@ -33,6 +33,6 @@ int	parser_init(char **argv, t_parser *p)
 	p->readout = ft_split(str, '\n');
 	free(str);
 	if (p->readout == NULL)
-		return (parser_error("p->readout ft_split() fail\n"));
+		return (print_error("p->readout ft_split() fail\n"));
 	return (0);
 }
