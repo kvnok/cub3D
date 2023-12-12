@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-uint32_t	get_pixel_value(int tex_x, int tex_y, t_dda *dda, int tex_num)
+static uint32_t	get_pixel_value(int tex_x, int tex_y, t_dda *dda, int tex_num)
 {
 	uint8_t	*pixel_data;
 	uint8_t	r;
@@ -28,7 +28,7 @@ uint32_t	get_pixel_value(int tex_x, int tex_y, t_dda *dda, int tex_num)
 	return (pixel_select(r, g, b, a));
 }
 
-t_coors_int	get_tex_x(t_dda *dda, int tex_num)
+static t_coors_int	get_tex_x(t_dda *dda, int tex_num)
 {
 	double		wall_x;
 	t_coors_int	tex;
@@ -44,7 +44,7 @@ t_coors_int	get_tex_x(t_dda *dda, int tex_num)
 	return (tex);
 }
 
-void	fill_buffer_texture(uint32_t **buffer, t_dda *dda, int x, int tex_num)
+static void	fill_buffer_texture(uint32_t **buffer, t_dda *dda, int x, int tex_num)
 {
 	t_coors_int	tex;
 	double		step;
@@ -69,7 +69,7 @@ void	fill_buffer_texture(uint32_t **buffer, t_dda *dda, int x, int tex_num)
 	}
 }
 
-int	get_tex_num(t_dda *dda)
+static int	get_tex_num(t_dda *dda)
 {
 	if (dda->current_side == X_SIDE && dda->ray_dir.x < 0)
 		return (W_INDEX);
