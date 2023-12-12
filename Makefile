@@ -4,6 +4,9 @@ NAME := cub3D
 
 SRC_FILES	:=	main.c			\
 				init_cleanup.c	\
+				Utils.c		\
+				Utils2.c		\
+				\
 				casting/dda/dda_main.c	\
 				casting/dda/dda_calc.c	\
 				casting/dda/dda_init.c	\
@@ -21,10 +24,6 @@ SRC_FILES	:=	main.c			\
 				parser/pGetRawData.c	\
 				parser/pMap.c			\
 				parser/pMapError.c		\
-				parser/pUtils.c			\
-				parser/pUtils2.c		\
-				\
-				tmp.c
 
 SRC_DIR := src
 OBJ_DIR := obj

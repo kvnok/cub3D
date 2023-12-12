@@ -72,19 +72,6 @@ typedef struct s_parser
 	char				starting_dir;
 }						t_parser;
 
-// parserUtils.c
-void					free_arr(char **string_arr);
-void					print_arr(char **string_arr);
-int						parser_error(char *error_text);
-int						get_length_arr(char **string_arr);
-void					print_dict(t_parser *p);
-bool					is_tab_inside(char *s);
-int32_t					pixel_select(int32_t r, int32_t g, int32_t b,
-							int32_t a);
-void					print_extracted_rgba(int32_t val, char *s);
-int						p_free_err_print(char *str, char *message);
-int						p_free_arr_print(char ***arr, char *message);
-
 // parser.c
 int						parser(char **argv, t_parser *p);
 

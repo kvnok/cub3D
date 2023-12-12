@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pUtils.c                                           :+:    :+:            */
+/*   Utils.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kkroon <kkroon@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
@@ -47,6 +47,12 @@ int	parser_error(char *error_text)
 		printf("Error\n");
 		printf("%s", error_text);
 	}
+	return (1);
+}
+
+int	print_error(const char *errorMsg)
+{
+	printf("%s\n", errorMsg);
 	return (1);
 }
 

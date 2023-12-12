@@ -48,8 +48,18 @@ void		img_buffer_init(t_program *data);
 void		fill_buffer(uint32_t **buffer, t_dda *dda, int x);
 void		key_input(t_program *data);
 
-/* temp-----------------------------------------------------------------------*/
-
+// Utilities
+void		free_arr(char **string_arr);
+void		print_arr(char **string_arr);
+int			parser_error(char *error_text);
+int			get_length_arr(char **string_arr);
+void		print_dict(t_parser *p);
+bool		is_tab_inside(char *s);
+int32_t		pixel_select(int32_t r, int32_t g, int32_t b,
+				int32_t a);
+void		print_extracted_rgba(int32_t val, char *s);
+int			p_free_err_print(char *str, char *message);
+int			p_free_arr_print(char ***arr, char *message);
 int			print_error(const char *errorMsg);
 
 #endif
