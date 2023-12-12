@@ -40,7 +40,7 @@ void	init_dict(t_parser *p)
 	p->dict[F_INDEX].key = FLOOR;
 	p->dict[C_INDEX].key = CEILING;
 	i = 0;
-	while (i < 6)
+	while (i < ELEMENT_AMOUNT)
 	{
 		p->dict[i].flag = false;
 		p->dict[i].value = NULL;

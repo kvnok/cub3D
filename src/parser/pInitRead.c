@@ -46,9 +46,7 @@ int	extract_text_from_file(char **str, t_parser *p)
 
 	fd = open(p->filename, O_RDONLY);
 	if (fd < 0)
-	{
 		return (parser_error("fd < 0\n"));
-	}
 	if (fill_string_from_file(str, fd))
 	{
 		close(fd);

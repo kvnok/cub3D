@@ -39,8 +39,13 @@ void	print_arr(char **string_arr)
 
 int	parser_error(char *error_text)
 {
-	printf("Error\n");
-	printf("%s", error_text);
+	static int run;
+	if (run == 0)
+	{
+		run++;
+		printf("Error\n");
+		printf("%s", error_text);
+	}
 	return (1);
 }
 
@@ -50,8 +55,6 @@ int	get_length_arr(char **string_arr)
 
 	i = 0;
 	while (string_arr[i] != NULL)
-	{
 		i++;
-	}
 	return (i);
 }
