@@ -39,7 +39,8 @@ void	print_arr(char **string_arr)
 
 int	parser_error(char *error_text)
 {
-	static int run;
+	static int	run = 0;
+
 	if (run == 0)
 	{
 		run++;
