@@ -1,8 +1,9 @@
 #!/bin/bash
 
+./cub3D ./maps/tux.cub
 # ./cub3D ./maps/correct.cub
 # ./cub3D ./maps/correct2.cub
-./cub3D ./maps/correct3.cub
+# ./cub3D ./maps/correct3.cub
 # ./cub3D ./maps/correct4.cub
 
 # ./cub3D ./maps/2.cub
