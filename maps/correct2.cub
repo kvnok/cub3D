@@ -1,11 +1,11 @@
 
-NO ./pics/north.png
-SO ./pics/south.png
-WE ./pics/west.png
-EA ./pics/east.png
+NO ./pics/colorstone.png
+SO ./pics/greystone.png
+WE ./pics/wood.png
+EA ./pics/redbrick.png
 
-F 23,107,135
-C 218,255,251
+F 77,67,66
+C 168,151,150
 
         1111111111111111111111111
         1000000000110000000000001
