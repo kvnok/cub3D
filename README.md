@@ -1,20 +1,20 @@
 # cub3D
 Raycasting gamedemo \
-uses MLX42 https://github.com/codam-coding-college/MLX42 for window and texture management \
+Made together with Oliver Van Rheenen : https://profile.intra.42.fr/users/ovan-rhe \
+Uses MLX42 https://github.com/codam-coding-college/MLX42 for window and texture management \
 which is made by fellow codam student and based on https://github.com/glfw/glfw \
-The full guidelines for the project can be found in `en.subject.pdf`. \
-project made together with Oliver Van Rheenen : https://profile.intra.42.fr/users/ovan-rhe
+The full guidelines for the project can be found in `en.subject.pdf`.
 
 ## Usage
-choose a map from the maps directory \
-make
+Choose a map from the maps directory \
+`make`
 ```bash
 ./cub3d maps/map_of_your_choice.ber
 ```
-exit the game with `esc`, `ctrl-c in the terminal` or click the cross
+Exit the game with `esc`, `ctrl-c in the terminal` or by clicking the cross in the top right
 
-you can change value in the maps \
-these consist of the following elements:
+You can change value in the maps \
+These consist of the following elements:
 - `C` : ceiling color in RGB value
 - `F` : floor color in RGB value
 - `NO` : texture for north facing wall
