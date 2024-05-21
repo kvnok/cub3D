@@ -2,8 +2,7 @@
 Raycasting gamedemo \
 Made together with Oliver Van Rheenen : https://profile.intra.42.fr/users/ovan-rhe \
 Uses MLX42 https://github.com/codam-coding-college/MLX42 for window and texture management \
-which is made by fellow codam student and based on https://github.com/glfw/glfw \
-The full guidelines for the project can be found in `en.subject.pdf`.
+which is made by fellow codam student and based on https://github.com/glfw/glfw
 
 ## Usage
 Choose a map from the maps directory \
